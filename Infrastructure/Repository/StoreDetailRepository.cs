@@ -41,6 +41,7 @@ namespace Infrastructure.Repository
         {
             var storeItems = await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId), trackChanges)
               .FilterStoreItems(storeItemParameters.MinQuantity, storeItemParameters.MaxQuantity)
+              .Search(storeItemParameters.SearchTerm)
              .OrderBy(e => e.model)
              .ToListAsync();
             return PagedList<StoreItem>
