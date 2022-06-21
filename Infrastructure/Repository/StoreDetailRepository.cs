@@ -38,7 +38,7 @@ namespace Infrastructure.Repository
 
         public async Task<PagedList<StoreItem>> GetStoreItemsAsync(int storeHeaderId, StoreItemParameters storeItemParameters, bool trackChanges)
         {
-            var storeItems = await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId), trackChanges)
+            var storeItems = await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId) && (e.quantity >= storeItemParameters.MinQuantity && e.quantity <= storeItemParameters.MaxQuantity), trackChanges)
              .OrderBy(e => e.model)
              .ToListAsync();
             return PagedList<StoreItem>

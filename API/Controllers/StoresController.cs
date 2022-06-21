@@ -25,6 +25,7 @@ namespace API.Controllers
         [HttpGet(Name = "GetStoreItems")]
         public async Task<IActionResult> GetAllStoreItems([FromQuery] StoreItemParameters storeItemParameters)
         {
+
             var storeItems = await _repository.StoreItem.GetAllStoreItemsAsync(storeItemParameters, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));

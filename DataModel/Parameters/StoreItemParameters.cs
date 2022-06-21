@@ -2,5 +2,9 @@
 {
     public class StoreItemParameters : RequestParameters
     {
+        public uint MinQuantity { get; set; }
+        public uint MaxQuantity { get; set; } = int.MaxValue;
+
+        public bool ValidQuantityRange => MaxQuantity > MinQuantity;
     }
 }
