@@ -2,6 +2,7 @@
 using DataModel;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
+using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -39,6 +40,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<StoreItem>> GetStoreItemsAsync(int storeHeaderId, StoreItemParameters storeItemParameters, bool trackChanges)
         {
             var storeItems = await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId), trackChanges)
+              .FilterStoreItems(storeItemParameters.MinQuantity, storeItemParameters.MaxQuantity)
              .OrderBy(e => e.model)
              .ToListAsync();
             return PagedList<StoreItem>
