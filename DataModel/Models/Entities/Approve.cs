@@ -12,6 +12,7 @@ namespace DataModel.Models.Entities
         public StoreItem StoreItem { get; set; }
         [ForeignKey(nameof(RequestItem))]
         public int requestId { get; set; }
+        public string? attachments { get; set; }
         public RequestItem RequestItem { get; set; }
 
     }
