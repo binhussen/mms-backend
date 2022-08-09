@@ -8,7 +8,6 @@ namespace DataModel.Models.Entities
         public int id { get; set; }
         [ForeignKey(nameof(Approve))]
         public int approveId { get; set; }
-        public int userId { get; set; }
         public Approve Approve { get; set; }
     }
 }
