@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Models.DTOs.Approve;
+using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
@@ -186,7 +186,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("requestapprove/{id}")]
+        [Route("requestdistribute/{id}")]
         public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
@@ -200,7 +200,7 @@ namespace API.Controllers
                 _mapper.Map(requestDto, requestItemEntity);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
             }
-            else if (status == "Approve")
+            else if (status == "Distribute")
             {
                 //find by quantity
                 var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
@@ -225,10 +225,10 @@ namespace API.Controllers
                     {
                         var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: true);
                         var storeDto = new StoreItemAvailableQuantity();
-                        var approveDto = new ApproveForCreationDto();
+                        var distributeDto = new DistributeForCreationDto();
                         if (item.Equals(last))
                         {
-                            approveDto = new ApproveForCreationDto()
+                            distributeDto = new DistributeForCreationDto()
                             {
                                 approvedQuantity = storeItem.availableQuantity - remainToStore,
                                 storeItemId = storeItem.id,
@@ -243,7 +243,7 @@ namespace API.Controllers
                         }
                         else
                         {
-                            approveDto = new ApproveForCreationDto()
+                            distributeDto = new DistributeForCreationDto()
                             {
                                 approvedQuantity = storeItem.availableQuantity,
                                 storeItemId = storeItem.id,
@@ -256,21 +256,21 @@ namespace API.Controllers
                                 availability = false
                             };
                         }
-                        var approveItem = _mapper.Map<Approve>(approveDto);
-                        _repository.Approve.CreateApprove(approveItem);
+                        var distributeItem = _mapper.Map<Distribute>(distributeDto);
+                        _repository.Distribute.CreateDistribute(distributeItem);
 
                         _mapper.Map(storeDto, storeItem);
 
                     }
-                    //update request item status & approved Quantity
+                    //update request item status & distributed Quantity
                     var requestDto = new RequestItemStatus()
                     {
-                        status = "Approve",
+                        status = "Distribute",
                         approvedQuantity = qty,
                         attachments = attachments
                     };
                     _mapper.Map(requestDto, requestItemEntity);
-                    _logger.LogInfo($"StatusMessage : {id} has been Approved");
+                    _logger.LogInfo($"StatusMessage : {id} has been Distributed");
                 }
             }
             await _repository.SaveAsync();

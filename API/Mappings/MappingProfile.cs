@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DataModel.Identity.Models;
-using DataModel.Models.DTOs.Approve;
 using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Hrs;
@@ -18,9 +17,9 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
-            //Approve
-            CreateMap<Approve, ApproveDto>();
-            CreateMap<ApproveForCreationDto, Approve>();
+            //Distribute
+            CreateMap<Distribute, DistributeDto>();
+            CreateMap<DistributeForCreationDto, Distribute>();
             CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
             //CreateMap<StoreItemAvailableQuantity, StoreItem>().ReverseMap();
             CreateMap<StoreItemAvailableQuantity, StoreItem>();

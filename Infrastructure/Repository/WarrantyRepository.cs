@@ -30,7 +30,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<CustomerWarranty>> GetCustomerWarrantysAsync(int customerId, CustomerWarrantyParameters customerWarrantyParameters, bool trackChanges)
         {
             var CustomerWarrantys = await FindByCondition(e => e.customerId.Equals(customerId), trackChanges)
-             .OrderBy(e => e.warantiyname)
+             .OrderBy(e => e.name)
              .ToListAsync();
             return PagedList<CustomerWarranty>
               .ToPagedList(CustomerWarrantys, customerWarrantyParameters.PageNumber, customerWarrantyParameters.PageSize);

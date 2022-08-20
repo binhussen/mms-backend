@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
 using DataModel.Models.DTOs.Distribute;
@@ -24,7 +24,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDistributes([FromQuery] DistributeParameters distributeParameters)
         {
-            var distributesFromDb = await _repository.Distribute.GetDistributesAsync(distributeParameters, trackChanges: false);
+            var distributesFromDb = await _repository.Distribute.GetAllDistributesAsync(distributeParameters, trackChanges: false);
             //Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(distributesFromDb.MetaData));
 
             var distributeDtos = _mapper.Map<IEnumerable<DistributeDto>>(distributesFromDb);
@@ -34,7 +34,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDistribute(int id)
         {
-            var distributeDb = await _repository.Distribute.GetDistributeAsync(id, trackChanges: false);
+            var distributeDb = await _repository.Distribute.GetDistributeByIdAsync(id, trackChanges: false);
             if (distributeDb == null)
             {
                 _logger.LogInfo($"Distribute with id: {id} doesn't exist in the database.");
@@ -81,7 +81,7 @@ namespace API.Controllers
                 _logger.LogError("Invalid model state for the DistributeDTO object");
                 return UnprocessableEntity(ModelState);
             }
-            var distributeEntity = await _repository.Distribute.GetDistributeAsync(id, trackChanges: true);
+            var distributeEntity = await _repository.Distribute.GetDistributeByIdAsync(id, trackChanges: true);
             if (distributeEntity == null)
             {
                 _logger.LogInfo($"Distribute with id: {id} doesn't exist in the database.");
@@ -97,7 +97,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDistribute(int id)
         {
-            var distribute = await _repository.Distribute.GetDistributeAsync(id, trackChanges: false);
+            var distribute = await _repository.Distribute.GetDistributeByIdAsync(id, trackChanges: false);
             if (distribute == null)
             {
                 _logger.LogInfo($"Distribute with id: {id} doesn't exist in the database.");
@@ -112,3 +112,4 @@ namespace API.Controllers
 
     }
 }
+*/

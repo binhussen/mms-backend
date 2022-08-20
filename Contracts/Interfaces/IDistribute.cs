@@ -5,10 +5,10 @@ namespace Contracts.Interfaces
 {
     public interface IDistribute
     {
-        Task<PagedList<Distribute>> GetAllApprovesAsync(DistributeParameters approveParameters, bool trackChanges);
-        Task<PagedList<Distribute>> GetAllApprovesAsync(int requestId, DistributeParameters approveParameters, bool trackChanges);
-        Task<Distribute> GetApproveByIdAsync(int id, bool trackChanges);
-        void CreateApprove(Distribute approve);
-        void DeleteApprove(Distribute approve);
+        Task<PagedList<Distribute>> GetAllDistributesAsync(DistributeParameters distributeParameters, bool trackChanges);
+        Task<PagedList<Distribute>> GetAllDistributesAsync(int requestId, DistributeParameters distributeParameters, bool trackChanges);
+        Task<Distribute> GetDistributeByIdAsync(int id, bool trackChanges);
+        void CreateDistribute(Distribute distribute);
+        void DeleteDistribute(Distribute distribute);
     }
 }

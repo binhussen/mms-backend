@@ -97,15 +97,6 @@ namespace Infrastructure.Repository
                 return _requestItemRepository;
             }
         }
-        public IDistribute Approve
-        {
-            get
-            {
-                if (_approveRepository == null)
-                    _approveRepository = new ApproveRepository(_repositoryContext);
-                return _approveRepository;
-            }
-        }
         public IDistribute Distribute
         {
             get

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Models.DTOs.Approve;
+using DataModel.Models.DTOs.Distribute;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,44 +10,44 @@ namespace API.Controllers
 {
     [Route("api")]
     [ApiController]
-    public class ApprovesController : ControllerBase
+    public class DistributesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public ApprovesController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        public DistributesController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
         }
-        [HttpGet("approves", Name = "GetAllApproves")]
-        public async Task<IActionResult> GetAllApproves([FromQuery] ApproveParameters approveParameters)
+        [HttpGet("distributes", Name = "GetAllDistributes")]
+        public async Task<IActionResult> GetAllDistributes([FromQuery] DistributeParameters distributeParameters)
         {
-            var approves = await _repository.Approve.GetAllApprovesAsync(approveParameters, trackChanges: false);
+            var distributes = await _repository.Distribute.GetAllDistributesAsync(distributeParameters, trackChanges: false);
 
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(approves.MetaData));
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(distributes.MetaData));
 
-            var approveDtos = _mapper.Map<IEnumerable<ApproveDto>>(approves);
-            return Ok(approveDtos);
+            var distributeDtos = _mapper.Map<IEnumerable<DistributeDto>>(distributes);
+            return Ok(distributeDtos);
         }
-        [HttpGet("approve/{id}", Name = "ApproveById")]
-        public async Task<IActionResult> GetApproveById(int id)
+        [HttpGet("distribute/{id}", Name = "DistributeById")]
+        public async Task<IActionResult> GetDistributeById(int id)
         {
-            var approve = await _repository.Approve.GetApproveByIdAsync(id, trackChanges: false);
-            if (approve == null)
+            var distribute = await _repository.Distribute.GetDistributeByIdAsync(id, trackChanges: false);
+            if (distribute == null)
             {
                 _logger.LogInfo($"Customer with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             else
             {
-                var approveDto = _mapper.Map<ApproveDto>(approve);
-                return Ok(approveDto);
+                var distributeDto = _mapper.Map<DistributeDto>(distribute);
+                return Ok(distributeDto);
             }
         }
-        [HttpGet("approves/{requestid}", Name = "GetApproveForRequest")]
-        public async Task<IActionResult> GetApprovesForRequest(int requestid, [FromQuery] ApproveParameters approveParameters)
+        [HttpGet("distributes/{requestid}", Name = "GetDistributeForRequest")]
+        public async Task<IActionResult> GetDistributesForRequest(int requestid, [FromQuery] DistributeParameters distributeParameters)
         {
             var request = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: false);
             if (request == null)
@@ -56,11 +56,11 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            var approvesFromDb = await _repository.Approve.GetAllApprovesAsync(requestid, approveParameters, trackChanges: false);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(approvesFromDb.MetaData));
+            var distributesFromDb = await _repository.Distribute.GetAllDistributesAsync(requestid, distributeParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(distributesFromDb.MetaData));
 
-            var approvesDto = _mapper.Map<IEnumerable<ApproveDto>>(approvesFromDb);
-            return Ok(approvesDto);
+            var distributesDto = _mapper.Map<IEnumerable<DistributeDto>>(distributesFromDb);
+            return Ok(distributesDto);
         }
     }
 }
