@@ -2,9 +2,9 @@
 
 namespace DataModel.Models.Entities
 {
-    public class Approve
+    public class Distribute
     {
-        [Column("approveId")]
+        [Column("distributeId")]
         public int? id { get; set; }
         public int approvedQuantity { get; set; }
         [ForeignKey(nameof(StoreItem))]
@@ -12,7 +12,6 @@ namespace DataModel.Models.Entities
         public StoreItem StoreItem { get; set; }
         [ForeignKey(nameof(RequestItem))]
         public int requestId { get; set; }
-        public string? attachments { get; set; }
         public RequestItem RequestItem { get; set; }
 
     }

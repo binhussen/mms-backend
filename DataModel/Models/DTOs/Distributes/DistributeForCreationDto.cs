@@ -1,6 +1,6 @@
-﻿namespace DataModel.Models.DTOs.Approve
+﻿namespace DataModel.Models.DTOs.Distribute
 {
-    public class ApproveForCreationDto : ApproveForManipulationDto
+    public class DistributeForCreationDto : DistributeForManipulationDto
     {
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
 {
-    public class ApproveRepository : RepositoryBase<Approve>, IApprove
+    public class ApproveRepository : RepositoryBase<Approve>, IDistribute
     {
         public ApproveRepository(MMSDbContext repositoryContext)
             : base(repositoryContext)

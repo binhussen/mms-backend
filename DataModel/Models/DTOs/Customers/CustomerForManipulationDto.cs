@@ -10,6 +10,7 @@
         public string? birthPlace { get; set; }
         public string? phoneNumber { get; set; }
         public DateTimeOffset? timeLimit { get; set; }
+        public string? picture { get; set; }
         public int hrId { get; set; }
     }
 }

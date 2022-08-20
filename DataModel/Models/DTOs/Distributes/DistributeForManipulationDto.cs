@@ -1,10 +1,9 @@
-﻿namespace DataModel.Models.DTOs.Approve
+﻿namespace DataModel.Models.DTOs.Distribute
 {
-    public class ApproveForManipulationDto
+    public class DistributeForManipulationDto
     {
         public int approvedQuantity { get; set; }
         public int storeItemId { get; set; }
         public int requestId { get; set; }
-        public string? attachments { get; set; }
     }
 }
