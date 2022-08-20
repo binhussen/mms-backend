@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataModel.Models.DTOs.Distribute
+namespace DataModel.Models.DTOs.Approve
 {
-    public class DistributeForUpdateDto:DistributeForManipulationDto
+    public class ApproveForUpdateDto:ApproveForManipulationDto
     {
     }
 }
