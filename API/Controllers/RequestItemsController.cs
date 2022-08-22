@@ -258,7 +258,7 @@ namespace API.Controllers
                             };
                             _mapper.Map(requestDto, requestItem);
                             //find by quantity
-                            var result = await _repository.StoreItem.GetStoreByModelAsync(requestItem.model, false);
+                            var result = await _repository.StoreItem.GetStoreByModelAsync(requestItem.model, true);
                             if (result != null)
                             {
                                 var sum = 0;
