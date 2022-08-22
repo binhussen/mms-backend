@@ -267,10 +267,11 @@ namespace API.Controllers
                                     if (sum < qty)
                                     {
                                         var remain = (res.availableQuantity - res.approvedQuantity);
-                                        sum += (remain >= (qty-sum)) ? qty : remain;
+                                        var rem = (qty - sum);
+                                        sum += ((sum+remain)>=qty) ?rem : remain;
                                         var storeDto = new StoreItemApprovedQuantity()
                                         {
-                                            approvedQuantity = (sum ==qty) ? (remain -sum) : remain
+                                            approvedQuantity = (sum==qty) ? rem : remain
                                     };
                                         _mapper.Map(storeDto, res);
                                     }
