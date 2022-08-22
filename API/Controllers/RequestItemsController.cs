@@ -271,8 +271,8 @@ namespace API.Controllers
                                         sum += ((sum+remain)>=qty) ?rem : remain;
                                         var storeDto = new StoreItemApprovedQuantity()
                                         {
-                                            approvedQuantity = (sum==qty) ? rem : remain
-                                    };
+                                            approvedQuantity = (sum==qty) ? res.approvedQuantity+rem : res.approvedQuantity+remain
+                                        };
                                         _mapper.Map(storeDto, res);
                                     }
 
