@@ -6,6 +6,7 @@ using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -85,15 +86,40 @@ namespace API.Controllers
                 _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
-
-            var requestItemEntity = _mapper.Map<RequestItem>(requestItem);
-
-            _repository.RequestItem.CreateRequestItemForRequestHeader(headerid, requestItemEntity);
-            await _repository.SaveAsync();
-            var requestItemToReturn = _mapper.Map<RequestItemDto>(requestItemEntity);
-            return CreatedAtRoute("GetRequestItemForRequestHeader", new { headerid, id = requestItemToReturn.id }, requestItemToReturn);
-
+            //check in store
+            var storeItems = await _repository.StoreItem.GetAllStoreItems( trackChanges: false);
+            var groupstoreItems = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
+                                .GroupBy(m => m.model)
+                               .Select(g => new
+                               {
+                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                   model = g.Key,
+                                   availablequantity = g.Sum(x => x.availableQuantity),
+                                   approvedequantity = g.Sum(x => x.approvedQuantity)
+                               }).ToList();
+            foreach (var item in groupstoreItems)
+            {
+                if(item.model == requestItem.model)
+                {
+                    if (item.availablequantity >= requestItem.requestedQuantity)
+                    {
+                        var requestItemEntity = _mapper.Map<RequestItem>(requestItem);
+                        _repository.RequestItem.CreateRequestItemForRequestHeader(headerid, requestItemEntity);
+                        await _repository.SaveAsync();
+                        var requestItemToReturn = _mapper.Map<RequestItemDto>(requestItemEntity);
+                        return CreatedAtRoute("GetRequestItemForRequestHeader", new { headerid, id = requestItemToReturn.id }, requestItemToReturn);
+                    }
+                    else
+                    {
+                        _logger.LogInfo("Requested Quantity is not Available in Store");
+                        return NotFound("Requested Quantity is not Available in Store");
+                    }
+                }
+            }
+            _logger.LogInfo("Requested Model is not Available in Store");
+            return NotFound("Requested Model is not Available in Store");
         }
+
         [HttpPut("requestheaders/{headerid}/items/{id}")]
         public async Task<IActionResult> UpdateRequestItemForRequestHeader(int headerid, int id, [FromBody] RequestItemForUpdateDto requestItem)
         {
@@ -186,7 +212,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("requestdistribute/{id}")]
+        [Route("requestapprove/{id}")]
         public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
@@ -276,5 +302,96 @@ namespace API.Controllers
             await _repository.SaveAsync();
             return Ok();
         }
+        /*[HttpPost]
+       [Route("requestdistribute/{id}")]
+       public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
+       {
+           var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
+           if (status == "Reject" | qty <= 0)
+           {
+               var requestDto = new RequestItemStatus()
+               {
+                   status = "Reject",
+                   attachments = attachments
+               };
+               _mapper.Map(requestDto, requestItemEntity);
+               _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+           }
+           else if (status == "Distribute")
+           {
+               //find by quantity
+               var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
+               if (result != null)
+               {
+                   var sum = 0;
+                   var remainToStore = 0;
+                   List<int> itemsId = new List<int>();
+                   foreach (var item in result)
+                   {
+                       itemsId.Add(item.id);
+                       sum += item.availableQuantity;
+                       if (sum >= qty)
+                       {
+                           remainToStore = sum - qty;
+                           break;
+                       }
+                   }
+                   int[] items = itemsId.ToArray();
+                   var last = items.LastOrDefault();
+                   foreach (var item in items)
+                   {
+                       var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: true);
+                       var storeDto = new StoreItemAvailableQuantity();
+                       var distributeDto = new DistributeForCreationDto();
+                       if (item.Equals(last))
+                       {
+                           distributeDto = new DistributeForCreationDto()
+                           {
+                               approvedQuantity = storeItem.availableQuantity - remainToStore,
+                               storeItemId = storeItem.id,
+                               requestId = id
+                           };
+                           //update store status
+                           storeDto = new StoreItemAvailableQuantity()
+                           {
+                               availableQuantity = remainToStore,
+                               availability = remainToStore == 0 ? false : true
+                           };
+                       }
+                       else
+                       {
+                           distributeDto = new DistributeForCreationDto()
+                           {
+                               approvedQuantity = storeItem.availableQuantity,
+                               storeItemId = storeItem.id,
+                               requestId = id
+                           };
+                           //update store status
+                           storeDto = new StoreItemAvailableQuantity()
+                           {
+                               availableQuantity = 0,
+                               availability = false
+                           };
+                       }
+                       var distributeItem = _mapper.Map<Distribute>(distributeDto);
+                       _repository.Distribute.CreateDistribute(distributeItem);
+
+                       _mapper.Map(storeDto, storeItem);
+
+                   }
+                   //update request item status & distributed Quantity
+                   var requestDto = new RequestItemStatus()
+                   {
+                       status = "Distribute",
+                       approvedQuantity = qty,
+                       attachments = attachments
+                   };
+                   _mapper.Map(requestDto, requestItemEntity);
+                   _logger.LogInfo($"StatusMessage : {id} has been Distributed");
+               }
+           }
+           await _repository.SaveAsync();
+           return Ok();
+       }*/
     }
 }
