@@ -23,6 +23,7 @@ namespace API.Mappings
             CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
             //CreateMap<StoreItemAvailableQuantity, StoreItem>().ReverseMap();
             CreateMap<StoreItemAvailableQuantity, StoreItem>();
+            CreateMap<StoreItemApprovedQuantity, StoreItem>();
             // Users
             CreateMap<ApplicationUser, AcountResponse>();
             CreateMap<UserForRegistrationDto, ApplicationUser>();

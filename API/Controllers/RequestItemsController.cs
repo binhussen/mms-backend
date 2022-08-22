@@ -87,21 +87,21 @@ namespace API.Controllers
                 return NotFound();
             }
             //check in store
-            var storeItems = await _repository.StoreItem.GetAllStoreItems( trackChanges: false);
+            var storeItems = await _repository.StoreItem.GetAllStoreItems(trackChanges: false);
             var groupstoreItems = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
                                 .GroupBy(m => m.model)
                                .Select(g => new
                                {
                                    ItemType = g.Select(x => x.type).FirstOrDefault(),
                                    model = g.Key,
-                                   availablequantity = g.Sum(x => x.availableQuantity),
-                                   approvedequantity = g.Sum(x => x.approvedQuantity)
+                                   availableQuantity = g.Sum(x => x.availableQuantity),
+                                   approvedQuantity = g.Sum(x => x.approvedQuantity)
                                }).ToList();
             foreach (var item in groupstoreItems)
             {
-                if(item.model == requestItem.model)
+                if (item.model == requestItem.model)
                 {
-                    if (item.availablequantity >= requestItem.requestedQuantity)
+                    if (item.availableQuantity >= requestItem.requestedQuantity)
                     {
                         var requestItemEntity = _mapper.Map<RequestItem>(requestItem);
                         _repository.RequestItem.CreateRequestItemForRequestHeader(headerid, requestItemEntity);
@@ -215,94 +215,24 @@ namespace API.Controllers
         [Route("requestapprove/{id}")]
         public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
         {
-            var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
-            if (status == "Reject" | qty <= 0)
+            var requestItem = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
+            if (status == "reject" | qty <= 0)
             {
                 var requestDto = new RequestItemStatus()
                 {
-                    status = "Reject",
+                    status = "reject",
                     attachments = attachments
                 };
-                _mapper.Map(requestDto, requestItemEntity);
+                _mapper.Map(requestDto, requestItem);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
-            }
-            else if (status == "Distribute")
-            {
-                //find by quantity
-                var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
-                if (result != null)
-                {
-                    var sum = 0;
-                    var remainToStore = 0;
-                    List<int> itemsId = new List<int>();
-                    foreach (var item in result)
-                    {
-                        itemsId.Add(item.id);
-                        sum += item.availableQuantity;
-                        if (sum >= qty)
-                        {
-                            remainToStore = sum - qty;
-                            break;
-                        }
-                    }
-                    int[] items = itemsId.ToArray();
-                    var last = items.LastOrDefault();
-                    foreach (var item in items)
-                    {
-                        var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: true);
-                        var storeDto = new StoreItemAvailableQuantity();
-                        var distributeDto = new DistributeForCreationDto();
-                        if (item.Equals(last))
-                        {
-                            distributeDto = new DistributeForCreationDto()
-                            {
-                                approvedQuantity = storeItem.availableQuantity - remainToStore,
-                                storeItemId = storeItem.id,
-                                requestId = id
-                            };
-                            //update store status
-                            storeDto = new StoreItemAvailableQuantity()
-                            {
-                                availableQuantity = remainToStore,
-                                availability = remainToStore == 0 ? false : true
-                            };
-                        }
-                        else
-                        {
-                            distributeDto = new DistributeForCreationDto()
-                            {
-                                approvedQuantity = storeItem.availableQuantity,
-                                storeItemId = storeItem.id,
-                                requestId = id
-                            };
-                            //update store status
-                            storeDto = new StoreItemAvailableQuantity()
-                            {
-                                availableQuantity = 0,
-                                availability = false
-                            };
-                        }
-                        var distributeItem = _mapper.Map<Distribute>(distributeDto);
-                        _repository.Distribute.CreateDistribute(distributeItem);
-
-                        _mapper.Map(storeDto, storeItem);
-
-                    }
-                    //update request item status & distributed Quantity
-                    var requestDto = new RequestItemStatus()
-                    {
-                        status = "Distribute",
-                        approvedQuantity = qty,
-                        attachments = attachments
-                    };
-                    _mapper.Map(requestDto, requestItemEntity);
-                    _logger.LogInfo($"StatusMessage : {id} has been Distributed");
-                }
             }
             await _repository.SaveAsync();
             return Ok();
+
         }
-        /*[HttpPost]
+    }
+}
+/*[HttpPost]
        [Route("requestdistribute/{id}")]
        public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
        {
@@ -393,5 +323,3 @@ namespace API.Controllers
            await _repository.SaveAsync();
            return Ok();
        }*/
-    }
-}
