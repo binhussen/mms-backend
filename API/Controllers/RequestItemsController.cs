@@ -226,6 +226,66 @@ namespace API.Controllers
                 _mapper.Map(requestDto, requestItem);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
             }
+            else if (status == "approve")
+            {
+                //check in store
+                if (qty > requestItem.requestedQuantity)
+                {
+                    _logger.LogInfo("You can't Approve greater than Requested Quantity");
+                    return NotFound("You can't Approve greater than Requested Quantity");
+                }
+                var storeItems = await _repository.StoreItem.GetAllStoreItems(trackChanges: false);
+                var groupstoreItems = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
+                                    .GroupBy(m => m.model)
+                                   .Select(g => new
+                                   {
+                                       ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                       model = g.Key,
+                                       availableQuantity = g.Sum(x => x.availableQuantity),
+                                       approvedQuantity = g.Sum(x => x.approvedQuantity)
+                                   }).ToList();
+                foreach (var item in groupstoreItems)
+                {
+                    if (item.model == requestItem.model)
+                    {
+                        if ((item.availableQuantity - item.approvedQuantity) >= qty)
+                        {
+                            var requestDto = new RequestItemStatus()
+                            {
+                                status = "approve",
+                                attachments = attachments,
+                                approvedQuantity = qty
+                            };
+                            _mapper.Map(requestDto, requestItem);
+                            //find by quantity
+                            var result = await _repository.StoreItem.GetStoreByModelAsync(requestItem.model, false);
+                            if (result != null)
+                            {
+                                var sum = 0;
+                                foreach (var res in result)
+                                {
+                                    if (sum < qty)
+                                    {
+                                        var remain = (res.availableQuantity - res.approvedQuantity);
+                                        sum += remain-qty;
+                                        var storeDto = new StoreItemApprovedQuantity()
+                                        {
+                                            approvedQuantity = res.approvedQuantity + remain-qty
+                                        };
+                                        _mapper.Map(storeDto, res);
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                _logger.LogInfo("Requested Quantity is not Available in Store");
+                                return NotFound("Requested Quantity is not Available in Store");
+                            }
+                        }
+                    }
+                }
+            }
             await _repository.SaveAsync();
             return Ok();
 
