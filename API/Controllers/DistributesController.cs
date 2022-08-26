@@ -125,6 +125,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = remainToStore,
+                                approvedQuantity = remainToStore,
                                 availability = remainToStore == 0 ? false : true
                             };
                         }
@@ -140,6 +141,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = 0,
+                                approvedQuantity = 0,
                                 availability = false
                             };
                         }
