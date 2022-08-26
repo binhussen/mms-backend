@@ -68,14 +68,24 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("distribute/{requestid}")]
-        public async Task<IActionResult> RequestApproval(int requestid, int qty)
+        public async Task<IActionResult> DistributeRequest(int requestid, int qty)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: true);
-            if(qty <= 0)
+            
+            if (requestItemEntity.status == "distribute")
             {
-
-                _logger.LogInfo($"StatusMessage : Request 0 {requestid} can't be distribute");
-                return BadRequest($"Request 0 {requestid} can't be distribute");
+                _logger.LogInfo($"StatusMessage : Request {requestid} already Distributed");
+                return BadRequest($"Request {requestid} already Distributed");
+            }
+            else if (requestItemEntity.status != "approve")
+            {
+                _logger.LogInfo($"StatusMessage : Request {requestid} not approved");
+                return BadRequest($"Request {requestid} not approved");
+            }
+            else if (qty <= 0||qty>requestItemEntity.approvedQuantity)
+            {
+                _logger.LogInfo($"StatusMessage : Request {qty} quantity can't be distribute");
+                return BadRequest($"Request {qty} quantity can't be distribute");
             }
             else
             {
@@ -142,7 +152,7 @@ namespace API.Controllers
                     //update request item status & distributed Quantity
                     var requestDto = new RequestItemStatus()
                     {
-                        status = "Distribute",
+                        status = "distribute",
                         approvedQuantity = qty,
                     };
                     _mapper.Map(requestDto, requestItemEntity);
