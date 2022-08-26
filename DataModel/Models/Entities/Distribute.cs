@@ -6,7 +6,7 @@ namespace DataModel.Models.Entities
     {
         [Column("distributeId")]
         public int? id { get; set; }
-        public int approvedQuantity { get; set; }
+        public int distributeQuantity { get; set; }
         [ForeignKey(nameof(StoreItem))]
         public int storeItemId { get; set; }
         public StoreItem StoreItem { get; set; }

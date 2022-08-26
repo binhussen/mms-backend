@@ -30,7 +30,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<Distribute>> GetAllDistributesAsync(DistributeParameters distributeParameters, bool trackChanges)
         {
             var distributes = await FindAll(trackChanges)
-                       .OrderBy(c => c.approvedQuantity)
+                       .OrderBy(c => c.distributeQuantity)
                       .ToListAsync();
             return PagedList<Distribute>
                 .ToPagedList(distributes, distributeParameters.PageNumber, distributeParameters.PageSize);

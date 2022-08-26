@@ -523,7 +523,6 @@ C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.Gene
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.AssemblyInfo.cs
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
-C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\staticwebassets.development.json
@@ -534,3 +533,4 @@ C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\refint\A
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.pdb
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\ref\API.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs

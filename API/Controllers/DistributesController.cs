@@ -117,7 +117,7 @@ namespace API.Controllers
                         {
                             distributeDto = new DistributeForCreationDto()
                             {
-                                approvedQuantity = storeItem.availableQuantity - remainToStore,
+                                distributeQuantity = storeItem.availableQuantity - remainToStore,
                                 storeItemId = storeItem.id,
                                 requestId = requestid
                             };
@@ -132,7 +132,7 @@ namespace API.Controllers
                         {
                             distributeDto = new DistributeForCreationDto()
                             {
-                                approvedQuantity = storeItem.availableQuantity,
+                                distributeQuantity = storeItem.availableQuantity,
                                 storeItemId = storeItem.id,
                                 requestId = requestid
                             };
@@ -153,7 +153,7 @@ namespace API.Controllers
                     var requestDto = new RequestItemStatus()
                     {
                         status = "distribute",
-                        approvedQuantity = qty,
+                        distributeQuantity = qty,
                     };
                     _mapper.Map(requestDto, requestItemEntity);
                     _logger.LogInfo($"StatusMessage : {requestid} has been Distributed");
