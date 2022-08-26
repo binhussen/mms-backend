@@ -663,7 +663,7 @@ namespace DataModel.Migrations
                             name = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             requestHeaderId = 1,
                             requestedQuantity = 10,
-                            status = "Pending",
+                            status = "pending",
                             type = "ክላሽ ጠብመንጃ"
                         },
                         new
@@ -676,7 +676,7 @@ namespace DataModel.Migrations
                             name = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             requestHeaderId = 1,
                             requestedQuantity = 5,
-                            status = "Pending",
+                            status = "pending",
                             type = "ክላሽ ጠብመንጃ ካርታ"
                         },
                         new
@@ -689,7 +689,7 @@ namespace DataModel.Migrations
                             name = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             requestHeaderId = 1,
                             requestedQuantity = 10,
-                            status = "Pending",
+                            status = "pending",
                             type = "የፒኬአም መተረየስ"
                         },
                         new
@@ -702,7 +702,7 @@ namespace DataModel.Migrations
                             name = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             requestHeaderId = 2,
                             requestedQuantity = 10,
-                            status = "Pending",
+                            status = "pending",
                             type = "ክላሽ ጠብመንጃ"
                         },
                         new
@@ -715,7 +715,7 @@ namespace DataModel.Migrations
                             name = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             requestHeaderId = 2,
                             requestedQuantity = 10,
-                            status = "Pending",
+                            status = "pending",
                             type = "ካኑኒ ኤስ ሽጉጥ"
                         },
                         new
@@ -728,7 +728,7 @@ namespace DataModel.Migrations
                             name = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             requestHeaderId = 2,
                             requestedQuantity = 5,
-                            status = "Pending",
+                            status = "pending",
                             type = "ካኑኒ ኤስ ሽጉጥ"
                         });
                 });

@@ -41,7 +41,7 @@ namespace Infrastructure.Repository
         {
             var distributes = await FindByCondition(e => e.requestId.Equals(requestId), trackChanges)
                           .OrderBy(e => e.storeItemId)
-                           // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+                           // .Select(s => s.status == "P" ? "pending" : s.status == "R" ? "reject" : s.status == "C" ? "Canceled" : "approve")
 
                            .ToListAsync();
             return PagedList<Distribute>

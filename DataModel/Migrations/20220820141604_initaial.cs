@@ -534,12 +534,12 @@ namespace DataModel.Migrations
                 columns: new[] { "requestItemId", "approvedQuantity", "attachments", "model", "name", "requestHeaderId", "requestedQuantity", "status", "type" },
                 values: new object[,]
                 {
-                    { 1, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 10, "Pending", "ክላሽ ጠብመንጃ" },
-                    { 2, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ ካርታ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 5, "Pending", "ክላሽ ጠብመንጃ ካርታ" },
-                    { 3, 0, "Upload your Attachment", "የፒኬአም መተረየስ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 1, 10, "Pending", "የፒኬአም መተረየስ" },
-                    { 4, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ AK-47", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 2, 10, "Pending", "ክላሽ ጠብመንጃ" },
-                    { 5, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 10, "Pending", "ካኑኒ ኤስ ሽጉጥ" },
-                    { 6, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 5, "Pending", "ካኑኒ ኤስ ሽጉጥ" }
+                    { 1, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 10, "pending", "ክላሽ ጠብመንጃ" },
+                    { 2, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ ካርታ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 5, "pending", "ክላሽ ጠብመንጃ ካርታ" },
+                    { 3, 0, "Upload your Attachment", "የፒኬአም መተረየስ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 1, 10, "pending", "የፒኬአም መተረየስ" },
+                    { 4, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ AK-47", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 2, 10, "pending", "ክላሽ ጠብመንጃ" },
+                    { 5, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 10, "pending", "ካኑኒ ኤስ ሽጉጥ" },
+                    { 6, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 5, "pending", "ካኑኒ ኤስ ሽጉጥ" }
                 });
 
             migrationBuilder.CreateIndex(
