@@ -71,7 +71,12 @@ namespace API.Controllers
         public async Task<IActionResult> RequestApproval(int requestid, int qty)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: true);
-            if(qty <= 0) _logger.LogInfo($"StatusMessage : Request 0 {requestid} can't be distribute");
+            if(qty <= 0)
+            {
+
+                _logger.LogInfo($"StatusMessage : Request 0 {requestid} can't be distribute");
+                return BadRequest($"Request 0 {requestid} can't be distribute");
+            }
             else
             {
                 //find by model
