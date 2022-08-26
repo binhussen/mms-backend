@@ -147,11 +147,37 @@ namespace API.Controllers
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
+            //check in store
+            var storeItems = await _repository.StoreItem.GetAllStoreItems(trackChanges: false);
+            var groupstoreItems = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
+                                .GroupBy(m => m.model)
+                               .Select(g => new
+                               {
+                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                   model = g.Key,
+                                   availableQuantity = g.Sum(x => x.availableQuantity),
+                                   approvedQuantity = g.Sum(x => x.approvedQuantity)
+                               }).ToList();
+            foreach (var item in groupstoreItems)
+            {
+                if (item.model == requestItem.model)
+                {
+                    if (item.availableQuantity >= requestItem.requestedQuantity)
+                    {
+                        _mapper.Map(requestItem, requestItemEntity);
+                        await _repository.SaveAsync();
 
-            _mapper.Map(requestItem, requestItemEntity);
-            await _repository.SaveAsync();
-
-            return NoContent();
+                        return NoContent();
+                    }
+                    else
+                    {
+                        _logger.LogInfo("Requested Quantity is not Available in Store");
+                        return NotFound("Requested Quantity is not Available in Store");
+                    }
+                }
+            }
+            _logger.LogInfo("Requested Model is not Available in Store");
+            return NotFound("Requested Model is not Available in Store");
 
         }
 
