@@ -4,6 +4,7 @@
     {
         public string status { get; set; }
         public int approvedQuantity { get; set; }
+        public int distributeQuantity { get; set; }
         public string? attachments { get; set; }
     }
 }

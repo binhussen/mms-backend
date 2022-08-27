@@ -147,11 +147,37 @@ namespace API.Controllers
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
+            //check in store
+            var storeItems = await _repository.StoreItem.GetAllStoreItems(trackChanges: false);
+            var groupstoreItems = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
+                                .GroupBy(m => m.model)
+                               .Select(g => new
+                               {
+                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                   model = g.Key,
+                                   availableQuantity = g.Sum(x => x.availableQuantity),
+                                   approvedQuantity = g.Sum(x => x.approvedQuantity)
+                               }).ToList();
+            foreach (var item in groupstoreItems)
+            {
+                if (item.model == requestItem.model)
+                {
+                    if (item.availableQuantity >= requestItem.requestedQuantity)
+                    {
+                        _mapper.Map(requestItem, requestItemEntity);
+                        await _repository.SaveAsync();
 
-            _mapper.Map(requestItem, requestItemEntity);
-            await _repository.SaveAsync();
-
-            return NoContent();
+                        return NoContent();
+                    }
+                    else
+                    {
+                        _logger.LogInfo("Requested Quantity is not Available in Store");
+                        return NotFound("Requested Quantity is not Available in Store");
+                    }
+                }
+            }
+            _logger.LogInfo("Requested Model is not Available in Store");
+            return NotFound("Requested Model is not Available in Store");
 
         }
 
@@ -293,94 +319,3 @@ namespace API.Controllers
         }
     }
 }
-/*[HttpPost]
-       [Route("requestdistribute/{id}")]
-       public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
-       {
-           var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
-           if (status == "Reject" | qty <= 0)
-           {
-               var requestDto = new RequestItemStatus()
-               {
-                   status = "Reject",
-                   attachments = attachments
-               };
-               _mapper.Map(requestDto, requestItemEntity);
-               _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
-           }
-           else if (status == "Distribute")
-           {
-               //find by quantity
-               var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
-               if (result != null)
-               {
-                   var sum = 0;
-                   var remainToStore = 0;
-                   List<int> itemsId = new List<int>();
-                   foreach (var item in result)
-                   {
-                       itemsId.Add(item.id);
-                       sum += item.availableQuantity;
-                       if (sum >= qty)
-                       {
-                           remainToStore = sum - qty;
-                           break;
-                       }
-                   }
-                   int[] items = itemsId.ToArray();
-                   var last = items.LastOrDefault();
-                   foreach (var item in items)
-                   {
-                       var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: true);
-                       var storeDto = new StoreItemAvailableQuantity();
-                       var distributeDto = new DistributeForCreationDto();
-                       if (item.Equals(last))
-                       {
-                           distributeDto = new DistributeForCreationDto()
-                           {
-                               approvedQuantity = storeItem.availableQuantity - remainToStore,
-                               storeItemId = storeItem.id,
-                               requestId = id
-                           };
-                           //update store status
-                           storeDto = new StoreItemAvailableQuantity()
-                           {
-                               availableQuantity = remainToStore,
-                               availability = remainToStore == 0 ? false : true
-                           };
-                       }
-                       else
-                       {
-                           distributeDto = new DistributeForCreationDto()
-                           {
-                               approvedQuantity = storeItem.availableQuantity,
-                               storeItemId = storeItem.id,
-                               requestId = id
-                           };
-                           //update store status
-                           storeDto = new StoreItemAvailableQuantity()
-                           {
-                               availableQuantity = 0,
-                               availability = false
-                           };
-                       }
-                       var distributeItem = _mapper.Map<Distribute>(distributeDto);
-                       _repository.Distribute.CreateDistribute(distributeItem);
-
-                       _mapper.Map(storeDto, storeItem);
-
-                   }
-                   //update request item status & distributed Quantity
-                   var requestDto = new RequestItemStatus()
-                   {
-                       status = "Distribute",
-                       approvedQuantity = qty,
-                       attachments = attachments
-                   };
-                   _mapper.Map(requestDto, requestItemEntity);
-                   _logger.LogInfo($"StatusMessage : {id} has been Distributed");
-               }
-           }
-           await _repository.SaveAsync();
-           return Ok();
-       }*/

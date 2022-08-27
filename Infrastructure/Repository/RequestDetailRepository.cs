@@ -37,7 +37,7 @@ namespace Infrastructure.Repository
         {
             var requestItems = await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId), trackChanges)
                            .OrderBy(e => e.name)
-                            // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+                            // .Select(s => s.status == "P" ? "pending" : s.status == "R" ? "reject" : s.status == "C" ? "Canceled" : "Approved")
 
                             .ToListAsync();
             return PagedList<RequestItem>

@@ -68,10 +68,25 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("distribute/{requestid}")]
-        public async Task<IActionResult> RequestApproval(int requestid, int qty)
+        public async Task<IActionResult> DistributeRequest(int requestid, int qty)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: true);
-            if(qty <= 0) _logger.LogInfo($"StatusMessage : Request 0 {requestid} can't be distribute");
+            
+            if (requestItemEntity.status == "distribute")
+            {
+                _logger.LogInfo($"StatusMessage : Request {requestid} already Distributed");
+                return BadRequest($"Request {requestid} already Distributed");
+            }
+            else if (requestItemEntity.status != "approve")
+            {
+                _logger.LogInfo($"StatusMessage : Request {requestid} not approved");
+                return BadRequest($"Request {requestid} not approved");
+            }
+            else if (qty <= 0||qty>requestItemEntity.approvedQuantity)
+            {
+                _logger.LogInfo($"StatusMessage : Request {qty} quantity can't be distribute");
+                return BadRequest($"Request {qty} quantity can't be distribute");
+            }
             else
             {
                 //find by model
@@ -102,7 +117,7 @@ namespace API.Controllers
                         {
                             distributeDto = new DistributeForCreationDto()
                             {
-                                approvedQuantity = storeItem.availableQuantity - remainToStore,
+                                distributeQuantity = storeItem.availableQuantity - remainToStore,
                                 storeItemId = storeItem.id,
                                 requestId = requestid
                             };
@@ -110,6 +125,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = remainToStore,
+                                approvedQuantity = remainToStore,
                                 availability = remainToStore == 0 ? false : true
                             };
                         }
@@ -117,7 +133,7 @@ namespace API.Controllers
                         {
                             distributeDto = new DistributeForCreationDto()
                             {
-                                approvedQuantity = storeItem.availableQuantity,
+                                distributeQuantity = storeItem.availableQuantity,
                                 storeItemId = storeItem.id,
                                 requestId = requestid
                             };
@@ -125,6 +141,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = 0,
+                                approvedQuantity = 0,
                                 availability = false
                             };
                         }
@@ -137,8 +154,8 @@ namespace API.Controllers
                     //update request item status & distributed Quantity
                     var requestDto = new RequestItemStatus()
                     {
-                        status = "Distribute",
-                        approvedQuantity = qty,
+                        status = "distribute",
+                        distributeQuantity = qty,
                     };
                     _mapper.Map(requestDto, requestItemEntity);
                     _logger.LogInfo($"StatusMessage : {requestid} has been Distributed");

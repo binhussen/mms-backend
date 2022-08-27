@@ -15,7 +15,6 @@ namespace Infrastructure.Repository
         private IStoreItem _storeItemRepository;
         private IRequestItem _requestItemRepository;
         private IRequestHeader _requestHeaderRepository;
-        private IDistribute _approveRepository;
         private IDistribute _distributeRepository;
         private ICustomer _customerRepository;
         private IWarranty _warrantyRepository;

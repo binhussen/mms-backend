@@ -30,7 +30,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<Distribute>> GetAllDistributesAsync(DistributeParameters distributeParameters, bool trackChanges)
         {
             var distributes = await FindAll(trackChanges)
-                       .OrderBy(c => c.approvedQuantity)
+                       .OrderBy(c => c.distributeQuantity)
                       .ToListAsync();
             return PagedList<Distribute>
                 .ToPagedList(distributes, distributeParameters.PageNumber, distributeParameters.PageSize);
@@ -41,7 +41,7 @@ namespace Infrastructure.Repository
         {
             var distributes = await FindByCondition(e => e.requestId.Equals(requestId), trackChanges)
                           .OrderBy(e => e.storeItemId)
-                           // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+                           // .Select(s => s.status == "P" ? "pending" : s.status == "R" ? "reject" : s.status == "C" ? "Canceled" : "approve")
 
                            .ToListAsync();
             return PagedList<Distribute>

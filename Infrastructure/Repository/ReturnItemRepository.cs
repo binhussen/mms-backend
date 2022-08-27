@@ -43,9 +43,9 @@ namespace Infrastructure.Repository
                                        where si.id == ap.storeItemId
                                        select new Distribute
                                        {
-                                           approvedQuantity = ap.approvedQuantity
+                                           distributeQuantity = ap.distributeQuantity
                                        }).FirstOrDefault();
-                    var y = backtostore.approvedQuantity;
+                    var y = backtostore.distributeQuantity;
                     if (x == y)
                     {
                         //we also need to increase the quantity
