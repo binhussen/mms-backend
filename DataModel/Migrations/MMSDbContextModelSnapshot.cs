@@ -99,36 +99,6 @@ namespace DataModel.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("DataModel.Models.Entities.Approve", b =>
-                {
-                    b.Property<int?>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("approveId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("id"), 1L, 1);
-
-                    b.Property<int>("approvedQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("attachments")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("requestId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("storeItemId")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("requestId");
-
-                    b.HasIndex("storeItemId");
-
-                    b.ToTable("Approves");
-                });
-
             modelBuilder.Entity("DataModel.Models.Entities.Customer", b =>
                 {
                     b.Property<int>("id")
@@ -137,9 +107,6 @@ namespace DataModel.Migrations
                         .HasColumnName("customerId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<DateTimeOffset?>("birthDate")
-                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("birthPlace")
                         .HasColumnType("nvarchar(max)");
@@ -153,16 +120,13 @@ namespace DataModel.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("occupation")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("phoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("region")
+                    b.Property<string>("picture")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("sex")
+                    b.Property<string>("region")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("subCity")
@@ -184,81 +148,66 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 1,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(247), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
                             name = "የሱፍ",
-                            occupation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             phoneNumber = "+251923531946",
                             region = "አማራ",
-                            sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(265), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5168), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 2,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(268), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ባቲ ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
                             name = "ሙሀመድ",
-                            occupation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             phoneNumber = "+251923531946",
                             region = "አማራ",
-                            sex = "ወንድ",
                             subCity = "ቦሌ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(269), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5187), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 3,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(270), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ጊንጪ ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 2,
                             name = "ሁንዴ",
-                            occupation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             phoneNumber = "+251923531946",
                             region = "ኦሮሚያ",
-                            sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(271), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5189), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 4,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(272), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
                             name = "ሰማይነህ",
-                            occupation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             phoneNumber = "+251923531946",
                             region = "አማራ",
-                            sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(273), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5190), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 5,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(274), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
                             name = "የሱፍ",
-                            occupation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             phoneNumber = "+251923531946",
                             region = "አማራ",
-                            sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Unspecified).AddTicks(275), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5191), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         });
                 });
@@ -272,22 +221,22 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("customerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("warantiyAddress")
+                    b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("warantiyRegion")
+                    b.Property<string>("region")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("warantiySubCity")
+                    b.Property<string>("subCity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("warantiyWoreda")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("warantiyname")
+                    b.Property<string>("woreda")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -300,60 +249,68 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 1,
+                            address = "ብቸና ከተማ",
                             customerId = 1,
-                            warantiyAddress = "ብቸና ከተማ",
-                            warantiyRegion = "አማራ",
-                            warantiySubCity = "ንፋስ ስልክ ላፍቶ",
-                            warantiyWoreda = "02",
-                            warantiyname = "የሱፍ"
+                            name = "የሱፍ",
+                            region = "አማራ",
+                            subCity = "ንፋስ ስልክ ላፍቶ",
+                            woreda = "02"
                         },
                         new
                         {
                             id = 2,
+                            address = "ባቲ ከተማ",
                             customerId = 1,
-                            warantiyAddress = "ባቲ ከተማ",
-                            warantiyRegion = "አማራ",
-                            warantiySubCity = "ቦሌ",
-                            warantiyWoreda = "02",
-                            warantiyname = "ሙሀመድ"
+                            name = "ሙሀመድ",
+                            region = "አማራ",
+                            subCity = "ቦሌ",
+                            woreda = "02"
                         },
                         new
                         {
                             id = 3,
+                            address = "ጊንጪ ከተማ",
                             customerId = 1,
-                            warantiyAddress = "ጊንጪ ከተማ",
-                            warantiyRegion = "ኦሮሚያ",
-                            warantiySubCity = "ንፋስ ስልክ ላፍቶ",
-                            warantiyWoreda = "02",
-                            warantiyname = "ሁንዴ"
+                            name = "ሁንዴ",
+                            region = "ኦሮሚያ",
+                            subCity = "ንፋስ ስልክ ላፍቶ",
+                            woreda = "02"
                         },
                         new
                         {
                             id = 4,
+                            address = "ብቸና ከተማ",
                             customerId = 1,
-                            warantiyAddress = "ብቸና ከተማ",
-                            warantiyRegion = "አማራ",
-                            warantiySubCity = "ንፋስ ስልክ ላፍቶ",
-                            warantiyWoreda = "02",
-                            warantiyname = "ሰማይነህ"
+                            name = "ሰማይነህ",
+                            region = "አማራ",
+                            subCity = "ንፋስ ስልክ ላፍቶ",
+                            woreda = "02"
                         });
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.Distribute", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int?>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("distributeId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("id"), 1L, 1);
 
-                    b.Property<int>("approveId")
+                    b.Property<int>("approvedQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("requestId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("storeItemId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("approveId");
+                    b.HasIndex("requestId");
+
+                    b.HasIndex("storeItemId");
 
                     b.ToTable("Distributes");
                 });
@@ -414,11 +371,11 @@ namespace DataModel.Migrations
                         {
                             id = 1,
                             LastName = "አለሙ",
-                            birthDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(137),
+                            birthDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5068),
                             firstName = "የሱፍ",
                             fpId = "26505157",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(148),
+                            higherDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5084),
                             middleName = "ፈንታ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -428,11 +385,11 @@ namespace DataModel.Migrations
                         {
                             id = 2,
                             LastName = "አሊ",
-                            birthDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(150),
+                            birthDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5086),
                             firstName = "ሙሀመድ",
                             fpId = "26505152",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(151),
+                            higherDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5086),
                             middleName = "ሁሴን",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -442,11 +399,11 @@ namespace DataModel.Migrations
                         {
                             id = 3,
                             LastName = "ኦርጌሳ",
-                            birthDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(152),
+                            birthDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5087),
                             firstName = "ሁንዴ",
                             fpId = "26505156",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(152),
+                            higherDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5088),
                             middleName = "ረጋሳ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -456,11 +413,11 @@ namespace DataModel.Migrations
                         {
                             id = 4,
                             LastName = "ታደሰ",
-                            birthDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(153),
+                            birthDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5090),
                             firstName = "ሰማይነህ",
                             fpId = "26505155",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(154),
+                            higherDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5090),
                             middleName = "ከበደ",
                             occpation = "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -470,11 +427,11 @@ namespace DataModel.Migrations
                         {
                             id = 5,
                             LastName = "ተንኮሉ",
-                            birthDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(178),
+                            birthDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5091),
                             firstName = "ተረፈ",
                             fpId = "fp2650",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 9, 10, 54, 32, 157, DateTimeKind.Local).AddTicks(179),
+                            higherDate = new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5091),
                             middleName = "በከለ",
                             occpation = "ዋና ክፍል ሀላፊ",
                             rank = "ዋና ክፍል",
@@ -881,6 +838,9 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<int>("approvedQuantity")
+                        .HasColumnType("int");
+
                     b.Property<bool>("availability")
                         .HasColumnType("bit");
 
@@ -927,6 +887,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 1,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
@@ -941,6 +902,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 2,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
@@ -955,6 +917,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 3,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
@@ -969,6 +932,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 4,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
@@ -983,6 +947,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 5,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
@@ -997,6 +962,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 6,
+                            approvedQuantity = 0,
                             availability = true,
                             availableQuantity = 10,
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
@@ -1039,22 +1005,22 @@ namespace DataModel.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "51b30786-74ca-4ae2-bc0f-390aa7afd182",
-                            ConcurrencyStamp = "ebefce79-4aa4-4318-873a-fecfd8ff4fae",
+                            Id = "b94a7bb8-6a49-4bc2-a810-9c307abf8ec7",
+                            ConcurrencyStamp = "d9a699d1-f2d3-4689-a395-1f0ae697674e",
                             Name = "mmd",
                             NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "64113ad6-c667-460b-a69a-cd4bb11d3b19",
-                            ConcurrencyStamp = "f3a06028-9c15-40db-abc9-cf30a0d9327e",
+                            Id = "f17aa31b-e420-48bd-aff1-d99b1db53dcc",
+                            ConcurrencyStamp = "cbea3c62-a6f8-4943-9fca-b93613c16792",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "44115d80-cb02-483b-b65c-f1cf8dde2701",
-                            ConcurrencyStamp = "ce9e9d02-3e60-4c56-9382-e225954e5332",
+                            Id = "5a20edab-c465-445c-bec0-d4f993e0f8c9",
+                            ConcurrencyStamp = "7e2b2a6b-204a-467c-ac2c-6071b1625366",
                             Name = "storeman",
                             NormalizedName = "storeman"
                         });
@@ -1166,25 +1132,6 @@ namespace DataModel.Migrations
                     b.ToTable("UsersTokens", (string)null);
                 });
 
-            modelBuilder.Entity("DataModel.Models.Entities.Approve", b =>
-                {
-                    b.HasOne("DataModel.Models.Entities.RequestItem", "RequestItem")
-                        .WithMany()
-                        .HasForeignKey("requestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataModel.Models.Entities.StoreItem", "StoreItem")
-                        .WithMany()
-                        .HasForeignKey("storeItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RequestItem");
-
-                    b.Navigation("StoreItem");
-                });
-
             modelBuilder.Entity("DataModel.Models.Entities.Customer", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.HR", "HR")
@@ -1209,13 +1156,21 @@ namespace DataModel.Migrations
 
             modelBuilder.Entity("DataModel.Models.Entities.Distribute", b =>
                 {
-                    b.HasOne("DataModel.Models.Entities.Approve", "Approve")
+                    b.HasOne("DataModel.Models.Entities.RequestItem", "RequestItem")
                         .WithMany()
-                        .HasForeignKey("approveId")
+                        .HasForeignKey("requestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Approve");
+                    b.HasOne("DataModel.Models.Entities.StoreItem", "StoreItem")
+                        .WithMany()
+                        .HasForeignKey("storeItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RequestItem");
+
+                    b.Navigation("StoreItem");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyItem", b =>

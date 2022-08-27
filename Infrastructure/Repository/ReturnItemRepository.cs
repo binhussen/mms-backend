@@ -38,10 +38,10 @@ namespace Infrastructure.Repository
                 if (findquantity != null)
                 {
 
-                    var backtostore = (from ap in RepositoryContext.Approves
+                    var backtostore = (from ap in RepositoryContext.Distributes
                                        join si in RepositoryContext.StoreItems on ap.storeItemId equals si.id
                                        where si.id == ap.storeItemId
-                                       select new Approve
+                                       select new Distribute
                                        {
                                            approvedQuantity = ap.approvedQuantity
                                        }).FirstOrDefault();

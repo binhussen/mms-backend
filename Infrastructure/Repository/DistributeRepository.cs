@@ -3,11 +3,6 @@ using DataModel;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -28,16 +23,31 @@ namespace Infrastructure.Repository
             Delete(distribute);
         }
 
-        public async Task<Distribute> GetDistributeAsync(int id, bool trackChanges) =>
+        public async Task<Distribute> GetDistributeByIdAsync(int id, bool trackChanges) =>
          await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<Distribute>> GetDistributesAsync(DistributeParameters distributeParameters,bool trackChanges){
+        public async Task<PagedList<Distribute>> GetAllDistributesAsync(DistributeParameters distributeParameters, bool trackChanges)
+        {
             var distributes = await FindAll(trackChanges)
-                       .ToListAsync();
+                       .OrderBy(c => c.approvedQuantity)
+                      .ToListAsync();
             return PagedList<Distribute>
-              .ToPagedList(distributes, distributeParameters.PageNumber, distributeParameters.PageSize);
-              }
+                .ToPagedList(distributes, distributeParameters.PageNumber, distributeParameters.PageSize);
+
+        }
+
+        public async Task<PagedList<Distribute>> GetAllDistributesAsync(int requestId, DistributeParameters distributeParameters, bool trackChanges)
+        {
+            var distributes = await FindByCondition(e => e.requestId.Equals(requestId), trackChanges)
+                          .OrderBy(e => e.storeItemId)
+                           // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+
+                           .ToListAsync();
+            return PagedList<Distribute>
+                .ToPagedList(distributes, distributeParameters.PageNumber, distributeParameters.PageSize);
+        }
+
     }
 }
 

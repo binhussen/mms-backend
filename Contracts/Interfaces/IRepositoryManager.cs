@@ -8,7 +8,6 @@
         IStoreItem StoreItem { get; }
         IRequestHeader RequestHeader { get; }
         IRequestItem RequestItem { get; }
-        IApprove Approve { get; }
         IDistribute Distribute { get; }
         ICustomer Customer { get; }
         IWarranty CustomerWarranty { get; }

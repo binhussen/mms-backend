@@ -52,6 +52,13 @@ namespace Infrastructure.Repository
             await FindAll(trackChanges)
                         .OrderByDescending(c => c.availableQuantity)
                        .ToListAsync();
+        public async Task<IEnumerable<StoreItem>> GetStoreByModelAsync(string model, bool trackChanges)
+        {
+            var storeItems = await FindByCondition(e => String.Equals(e.model,model), trackChanges)
+               .OrderByDescending(c => c.availableQuantity)
+             .ToListAsync();
+            return storeItems;
+        }
         public async Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges) =>
             await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
@@ -78,5 +85,10 @@ namespace Infrastructure.Repository
                 await RepositoryContext.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<StoreItem>> GetAllStoreItems(bool trackChanges) => 
+            await FindAll(trackChanges)
+                        .OrderBy(c => c.model)
+                       .ToListAsync();
     }
 }

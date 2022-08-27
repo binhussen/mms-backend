@@ -2,10 +2,10 @@
 {
     public class WarrantyForManipulationDto
     {
-        public string? warantiyname { get; set; }
-        public string? warantiyAddress { get; set; }
-        public string? warantiySubCity { get; set; }
-        public string? warantiyWoreda { get; set; }
-        public string? warantiyRegion { get; set; }
+        public string? name { get; set; }
+        public string? address { get; set; }
+        public string? subCity { get; set; }
+        public string? woreda { get; set; }
+        public string? region { get; set; }
     }
 }

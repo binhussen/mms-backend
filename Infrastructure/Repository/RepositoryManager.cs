@@ -15,7 +15,7 @@ namespace Infrastructure.Repository
         private IStoreItem _storeItemRepository;
         private IRequestItem _requestItemRepository;
         private IRequestHeader _requestHeaderRepository;
-        private IApprove _approveRepository;
+        private IDistribute _approveRepository;
         private IDistribute _distributeRepository;
         private ICustomer _customerRepository;
         private IWarranty _warrantyRepository;
@@ -95,15 +95,6 @@ namespace Infrastructure.Repository
                 if (_requestItemRepository == null)
                     _requestItemRepository = new RequestDetailRepository(_repositoryContext);
                 return _requestItemRepository;
-            }
-        }
-        public IApprove Approve
-        {
-            get
-            {
-                if (_approveRepository == null)
-                    _approveRepository = new ApproveRepository(_repositoryContext);
-                return _approveRepository;
             }
         }
         public IDistribute Distribute
