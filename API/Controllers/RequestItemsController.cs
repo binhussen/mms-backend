@@ -243,8 +243,14 @@ namespace API.Controllers
         {
             var requestItem = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
             
-            if (status == "reject" | qty <= 0)
+            if (status == "reject")
             {
+                else if (requestItem.status == "distribite")
+                {
+                    _logger.LogInfo("You can't Reject already distributed item");
+                    return NotFound("You can't Reject already distributed item");
+                }
+
                 var requestDto = new RequestItemStatus()
                 {
                     status = "reject",
@@ -261,8 +267,18 @@ namespace API.Controllers
                     _logger.LogInfo("You can't Approve already approved item");
                     return NotFound("You can't Approve already approved item");
                 }
+                else if (requestItem.status == "distribite")
+                {
+                    _logger.LogInfo("You can't Approve already distributed item");
+                    return NotFound("You can't Approve already distributed item");
+                }
                 //check in store
-                if (qty > requestItem.requestedQuantity)
+                if (qty <= 0)
+                {
+                    _logger.LogInfo($"You can't Approve {qty} Quantity");
+                    return NotFound($"You can't Approve {qty} Quantity");
+                }
+                else if (qty > requestItem.requestedQuantity)
                 {
                     _logger.LogInfo("You can't Approve greater than Requested Quantity");
                     return NotFound("You can't Approve greater than Requested Quantity");
