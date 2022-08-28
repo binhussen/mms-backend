@@ -245,6 +245,10 @@ namespace API.Controllers
             
             if (status == "reject")
             {
+                if (requestItem.status == "approve")
+                {
+                    //todo
+                }
                 else if (requestItem.status == "distribite")
                 {
                     _logger.LogInfo("You can't Reject already distributed item");
