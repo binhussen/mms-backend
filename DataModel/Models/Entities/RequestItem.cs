@@ -11,8 +11,8 @@ namespace DataModel.Models.Entities
         public string model { get; set; }
         public string status { get; set; } = "pending";
         public int requestedQuantity { get; set; }
-        public int approvedQuantity { get; set; } = 0;
-        public int distributeQuantity { get; set; } = 0;
+        public int approvedQuantity { get; set; }
+        public int distributeQuantity { get; set; }
         public string? attachments { get; set; }
 
         [ForeignKey(nameof(RequestHeader))]
