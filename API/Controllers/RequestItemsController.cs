@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
+using DataModel.Migrations;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
@@ -245,23 +246,27 @@ namespace API.Controllers
             
             if (status == "reject")
             {
-                if (requestItem.status == "approve")
+                /*if (requestItem.status == "approve")
                 {
                     //todo
-                }
-                else if (requestItem.status == "distribite")
+                }*/ 
+                if (requestItem.status == "distribute")
                 {
                     _logger.LogInfo("You can't Reject already distributed item");
                     return NotFound("You can't Reject already distributed item");
                 }
-
-                var requestDto = new RequestItemStatus()
+                else
                 {
-                    status = "reject",
-                    attachments = attachments
-                };
-                _mapper.Map(requestDto, requestItem);
-                _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+                    var requestDto = new RequestItemStatus()
+                    {
+                        status = "reject",
+                        attachments = attachments
+                    };
+                    _mapper.Map(requestDto, requestItem);
+                    _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+
+                }
+               
             }
             else if (status == "approve")
             {
@@ -271,7 +276,7 @@ namespace API.Controllers
                     _logger.LogInfo("You can't Approve already approved item");
                     return NotFound("You can't Approve already approved item");
                 }
-                else if (requestItem.status == "distribite")
+                else if (requestItem.status == "distribute")
                 {
                     _logger.LogInfo("You can't Approve already distributed item");
                     return NotFound("You can't Approve already distributed item");
