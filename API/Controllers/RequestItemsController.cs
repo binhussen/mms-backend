@@ -242,6 +242,7 @@ namespace API.Controllers
         public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
         {
             var requestItem = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
+            
             if (status == "reject" | qty <= 0)
             {
                 var requestDto = new RequestItemStatus()
@@ -254,6 +255,12 @@ namespace API.Controllers
             }
             else if (status == "approve")
             {
+                //check previos ststus
+                if (requestItem.status == "approve")
+                {
+                    _logger.LogInfo("You can't Approve already approved item");
+                    return NotFound("You can't Approve already approved item");
+                }
                 //check in store
                 if (qty > requestItem.requestedQuantity)
                 {
