@@ -82,7 +82,7 @@ namespace API.Controllers
                 _logger.LogInfo($"StatusMessage : Request {requestid} not approved");
                 return BadRequest($"Request {requestid} not approved");
             }
-            else if (qty <= 0||qty>requestItemEntity.approvedQuantity)
+            else if (qty <= 0||qty>requestItemEntity.approvedQuantity-requestItemEntity.distributeQuantity)
             {
                 _logger.LogInfo($"StatusMessage : Request {qty} quantity can't be distribute");
                 return BadRequest($"Request {qty} quantity can't be distribute");

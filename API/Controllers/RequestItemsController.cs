@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
+using DataModel.Migrations;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
@@ -242,20 +243,51 @@ namespace API.Controllers
         public async Task<IActionResult> RequestApproval(int id, int qty, string status, string? attachments)
         {
             var requestItem = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
-            if (status == "reject" | qty <= 0)
+            
+            if (status == "reject")
             {
-                var requestDto = new RequestItemStatus()
+                /*if (requestItem.status == "approve")
                 {
-                    status = "reject",
-                    attachments = attachments
-                };
-                _mapper.Map(requestDto, requestItem);
-                _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+                    //todo
+                }*/ 
+                if (requestItem.status == "distribute")
+                {
+                    _logger.LogInfo("You can't Reject already distributed item");
+                    return NotFound("You can't Reject already distributed item");
+                }
+                else
+                {
+                    var requestDto = new RequestItemStatus()
+                    {
+                        status = "reject",
+                        attachments = attachments
+                    };
+                    _mapper.Map(requestDto, requestItem);
+                    _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+
+                }
+               
             }
             else if (status == "approve")
             {
+                //check previos ststus
+                if (requestItem.status == "approve")
+                {
+                    _logger.LogInfo("You can't Approve already approved item");
+                    return NotFound("You can't Approve already approved item");
+                }
+                else if (requestItem.status == "distribute")
+                {
+                    _logger.LogInfo("You can't Approve already distributed item");
+                    return NotFound("You can't Approve already distributed item");
+                }
                 //check in store
-                if (qty > requestItem.requestedQuantity)
+                if (qty <= 0)
+                {
+                    _logger.LogInfo($"You can't Approve {qty} Quantity");
+                    return NotFound($"You can't Approve {qty} Quantity");
+                }
+                else if (qty > requestItem.requestedQuantity)
                 {
                     _logger.LogInfo("You can't Approve greater than Requested Quantity");
                     return NotFound("You can't Approve greater than Requested Quantity");
