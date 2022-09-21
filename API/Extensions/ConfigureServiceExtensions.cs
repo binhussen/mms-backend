@@ -95,7 +95,7 @@ namespace API.Extensions
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequiredLength = 10;
+                opt.Password.RequiredLength = 6;
                 //opt.User.RequireUniqueEmail = true;
                 opt.Password.RequiredUniqueChars = 1;
 

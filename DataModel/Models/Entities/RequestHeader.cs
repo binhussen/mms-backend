@@ -12,6 +12,7 @@ namespace DataModel.Models.Entities
         public string description { get; set; }
         [Required(ErrorMessage = "Upload your attachment.")]
         public string? attachments { get; set; }
+        public string? type { get; set; }
         [ForeignKey(nameof(HR))]
         public int hrId { get; set; }
         public HR HR { get; set; }
