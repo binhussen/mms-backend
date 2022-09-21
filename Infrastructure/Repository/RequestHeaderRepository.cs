@@ -33,5 +33,9 @@ namespace Infrastructure.Repository
         public async Task<RequestHeader> GetRequestHeaderAsync(int requestHeaderId, bool trackChanges) =>
             await FindByCondition(c => c.id.Equals(requestHeaderId), trackChanges)
             .SingleOrDefaultAsync();
+
+        public async Task<RequestHeader> GetRequestHeaderByType(string type, bool trackChanges) =>
+            await FindByCondition(c => c.type.Equals(type), trackChanges)
+            .SingleOrDefaultAsync();
     }
 }
