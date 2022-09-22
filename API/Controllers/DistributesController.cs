@@ -72,12 +72,7 @@ namespace API.Controllers
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: true);
             
-            if (requestItemEntity.status == "distribute")
-            {
-                _logger.LogInfo($"StatusMessage : Request {requestid} already Distributed");
-                return BadRequest($"Request {requestid} already Distributed");
-            }
-            else if (requestItemEntity.status != "approve")
+            if (requestItemEntity.status != "approve")
             {
                 _logger.LogInfo($"StatusMessage : Request {requestid} not approved");
                 return BadRequest($"Request {requestid} not approved");
@@ -89,6 +84,13 @@ namespace API.Controllers
             }
             else
             {
+                //todo swapping serial number
+                if (requestItemEntity.status == "distribute")
+                {
+                    //todo for next transaction
+                    _logger.LogInfo($"StatusMessage : Request {requestid} already Distributed");
+                    return BadRequest($"Request {requestid} already Distributed");
+                }
                 //find by model
                 var result = await _repository.StoreItem.GetStoreByModelAsync(requestItemEntity.model, false);
                 if (result != null)
@@ -155,6 +157,7 @@ namespace API.Controllers
                     var requestDto = new RequestItemStatus()
                     {
                         status = "distribute",
+                        approvedQuantity = requestItemEntity.approvedQuantity,
                         distributeQuantity = qty,
                     };
                     _mapper.Map(requestDto, requestItemEntity);

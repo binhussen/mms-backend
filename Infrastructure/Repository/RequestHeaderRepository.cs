@@ -1,7 +1,9 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
+using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
+using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -33,5 +35,8 @@ namespace Infrastructure.Repository
         public async Task<RequestHeader> GetRequestHeaderAsync(int requestHeaderId, bool trackChanges) =>
             await FindByCondition(c => c.id.Equals(requestHeaderId), trackChanges)
             .SingleOrDefaultAsync();
+
+        public async Task<IEnumerable<RequestHeader>> GetRequestHeaderByType(string type, bool trackChanges) =>
+            await FindByCondition(c => c.type.Equals(type), trackChanges).ToListAsync();
     }
 }

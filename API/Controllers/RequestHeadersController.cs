@@ -47,6 +47,21 @@ namespace API.Controllers
                 return Ok(requestHeaderDto);
             }
         }
+        [HttpGet("type/{type}", Name = "RequestHeaderByType")]
+        public async Task<IActionResult> GetRequestHeaderByType(string type)
+        {
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderByType(type, trackChanges: false);
+            if (requestHeader == null)
+            {
+                _logger.LogInfo($"RequestHeader with type: {type} doesn't exist in the database.");
+                return NotFound();
+            }
+            else
+            {
+                var requestHeaderDto = _mapper.Map<IEnumerable<RequestHeaderDto>>(requestHeader);
+                return Ok(requestHeaderDto);
+            }
+        }
         [HttpPost(Name = "CreateRequestHeader")]
         public async Task<IActionResult> CreateNotifyHeader([FromBody] RequestHeaderForCreationDto requestHeader)
         {
