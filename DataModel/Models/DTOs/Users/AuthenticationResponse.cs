@@ -5,5 +5,7 @@
         public string UserName { get; set; }
         public string Token { get; set; }
         public DateTimeOffset Expiration { get; set; }
+
+        public string Role { get; set; }
     }
 }
