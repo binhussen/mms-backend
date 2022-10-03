@@ -51,10 +51,10 @@ namespace DataModel.Identity.Services
 
             AuthenticationResponse response = new()
             {
-
                 Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions),
                 UserName = _user.UserName,
-                Expiration = tokenOptions.ValidTo
+                Expiration = tokenOptions.ValidTo,
+                Role = tokenOptions.Claims.First(c => c.Type == "role").Value
             };
 
             return response;
@@ -81,7 +81,7 @@ namespace DataModel.Identity.Services
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                claims.Add(new Claim("role", role));
             }
 
             return claims;
