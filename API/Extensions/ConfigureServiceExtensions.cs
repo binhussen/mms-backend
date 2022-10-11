@@ -24,7 +24,8 @@ namespace API.Extensions
                     builder => builder
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowAnyOrigin());
+                    .AllowAnyOrigin()
+                    .WithExposedHeaders("*"));
             });
 
         }

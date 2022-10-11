@@ -11,18 +11,28 @@ namespace DataModel.Identity.Configuration
             builder.HasData(
               new IdentityRole
               {
-                  Name = "mmd",
-                  NormalizedName = "MMD"
-              },
-              new IdentityRole
-              {
                   Name = "Admin",
-                  NormalizedName = "Admin"
+                  NormalizedName = "ADMIN"
               },
               new IdentityRole
               {
-                  Name = "storeman",
-                  NormalizedName = "storeman"
+                  Name = "StoreMan",
+                  NormalizedName = "STOREMAN"
+              },
+              new IdentityRole
+              {
+                  Name = "Request",
+                  NormalizedName = "REQUEST"
+              },
+              new IdentityRole
+              {
+                  Name = "Approve",
+                  NormalizedName = "APPROVE"
+              },
+              new IdentityRole
+              {
+                  Name = "View",
+                  NormalizedName = "VIEW"
               }
 
             );

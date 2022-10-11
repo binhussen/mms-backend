@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Migrations;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
