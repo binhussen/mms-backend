@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataModel.Migrations
 {
-    public partial class initaial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,6 +140,7 @@ namespace DataModel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     description = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     attachments = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     hrId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -368,6 +369,7 @@ namespace DataModel.Migrations
                     status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     requestedQuantity = table.Column<int>(type: "int", nullable: false),
                     approvedQuantity = table.Column<int>(type: "int", nullable: false),
+                    distributeQuantity = table.Column<int>(type: "int", nullable: false),
                     attachments = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     requestHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -411,7 +413,7 @@ namespace DataModel.Migrations
                 {
                     distributeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    approvedQuantity = table.Column<int>(type: "int", nullable: false),
+                    distributeQuantity = table.Column<int>(type: "int", nullable: false),
                     storeItemId = table.Column<int>(type: "int", nullable: false),
                     requestId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -437,11 +439,11 @@ namespace DataModel.Migrations
                 columns: new[] { "hrId", "LastName", "birthDate", "firstName", "fpId", "gender", "higherDate", "middleName", "occpation", "rank", "reponsibilty" },
                 values: new object[,]
                 {
-                    { 1, "አለሙ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5068), "የሱፍ", "26505157", "ወንድ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5084), "ፈንታ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 2, "አሊ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5086), "ሙሀመድ", "26505152", "ወንድ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5086), "ሁሴን", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 3, "ኦርጌሳ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5087), "ሁንዴ", "26505156", "ወንድ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5088), "ረጋሳ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 4, "ታደሰ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5090), "ሰማይነህ", "26505155", "ወንድ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5090), "ከበደ", "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 5, "ተንኮሉ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5091), "ተረፈ", "fp2650", "ወንድ", new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Local).AddTicks(5091), "በከለ", "ዋና ክፍል ሀላፊ", "ዋና ክፍል", "ዋና ክፍል" }
+                    { 1, "አለሙ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2894), "የሱፍ", "26505157", "ወንድ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2917), "ፈንታ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 2, "አሊ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2923), "ሙሀመድ", "26505152", "ወንድ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2923), "ሁሴን", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 3, "ኦርጌሳ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2926), "ሁንዴ", "26505156", "ወንድ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2927), "ረጋሳ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 4, "ታደሰ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2929), "ሰማይነህ", "26505155", "ወንድ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2930), "ከበደ", "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 5, "ተንኮሉ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2932), "ተረፈ", "fp2650", "ወንድ", new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Local).AddTicks(2933), "በከለ", "ዋና ክፍል ሀላፊ", "ዋና ክፍል", "ዋና ክፍል" }
                 });
 
             migrationBuilder.InsertData(
@@ -458,9 +460,11 @@ namespace DataModel.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "5a20edab-c465-445c-bec0-d4f993e0f8c9", "7e2b2a6b-204a-467c-ac2c-6071b1625366", "storeman", "storeman" },
-                    { "b94a7bb8-6a49-4bc2-a810-9c307abf8ec7", "d9a699d1-f2d3-4689-a395-1f0ae697674e", "mmd", "MMD" },
-                    { "f17aa31b-e420-48bd-aff1-d99b1db53dcc", "cbea3c62-a6f8-4943-9fca-b93613c16792", "Admin", "Admin" }
+                    { "3fdbdc8c-5878-4ffa-afb7-b0c3c88dba0b", "b5506daf-ad82-4361-b0fb-fcd87c0cfe2a", "Approve", "APPROVE" },
+                    { "41c2d1fc-cdd9-4744-bb3e-e323a883dcbc", "8de8ad72-1c4d-45c9-b83b-1d27b656b1e3", "Request", "REQUEST" },
+                    { "64fbf566-5f0e-4dc6-b633-2b152e210191", "70562755-c81e-4410-90b8-7b1eaf6bbef7", "View", "VIEW" },
+                    { "9e171307-0263-4112-82dc-db9326e6b11f", "6d62899b-4c55-4c29-97fa-7f115fd1112b", "StoreMan", "STOREMAN" },
+                    { "d6527b0b-e5fe-43c0-86ca-21a8f0a6001f", "0f372265-a926-4f8d-9a67-9a72ae9f539c", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -477,11 +481,11 @@ namespace DataModel.Migrations
                 columns: new[] { "customerId", "birthPlace", "homeNumber", "hrId", "name", "phoneNumber", "picture", "region", "subCity", "timeLimit", "woreda" },
                 values: new object[,]
                 {
-                    { 1, "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5168), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 2, "ባቲ ከተማ", "+251923531946", 1, "ሙሀመድ", "+251923531946", null, "አማራ", "ቦሌ", new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5187), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 3, "ጊንጪ ከተማ", "+251923531946", 2, "ሁንዴ", "+251923531946", null, "ኦሮሚያ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5189), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 4, "ብቸና ከተማ", "+251923531946", 1, "ሰማይነህ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5190), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 5, "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 20, 17, 16, 4, 338, DateTimeKind.Unspecified).AddTicks(5191), new TimeSpan(0, 3, 0, 0, 0)), "02" }
+                    { 1, "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Unspecified).AddTicks(3135), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 2, "ባቲ ከተማ", "+251923531946", 1, "ሙሀመድ", "+251923531946", null, "አማራ", "ቦሌ", new DateTimeOffset(new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Unspecified).AddTicks(3161), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 3, "ጊንጪ ከተማ", "+251923531946", 2, "ሁንዴ", "+251923531946", null, "ኦሮሚያ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Unspecified).AddTicks(3165), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 4, "ብቸና ከተማ", "+251923531946", 1, "ሰማይነህ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Unspecified).AddTicks(3168), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 5, "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "+251923531946", null, "አማራ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 10, 11, 14, 2, 56, 194, DateTimeKind.Unspecified).AddTicks(3171), new TimeSpan(0, 3, 0, 0, 0)), "02" }
                 });
 
             migrationBuilder.InsertData(
@@ -498,11 +502,11 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "RequestHeaders",
-                columns: new[] { "requestHeaderId", "attachments", "description", "hrId" },
+                columns: new[] { "requestHeaderId", "attachments", "description", "hrId", "type" },
                 values: new object[,]
                 {
-                    { 1, "Upload your Attachment", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1 },
-                    { 2, "Upload your Attachment", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2 }
+                    { 1, "Upload your Attachment", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, null },
+                    { 2, "Upload your Attachment", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, null }
                 });
 
             migrationBuilder.InsertData(
@@ -531,15 +535,15 @@ namespace DataModel.Migrations
 
             migrationBuilder.InsertData(
                 table: "RequestItems",
-                columns: new[] { "requestItemId", "approvedQuantity", "attachments", "model", "name", "requestHeaderId", "requestedQuantity", "status", "type" },
+                columns: new[] { "requestItemId", "approvedQuantity", "attachments", "distributeQuantity", "model", "name", "requestHeaderId", "requestedQuantity", "status", "type" },
                 values: new object[,]
                 {
-                    { 1, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 10, "pending", "ክላሽ ጠብመንጃ" },
-                    { 2, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ ካርታ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 5, "pending", "ክላሽ ጠብመንጃ ካርታ" },
-                    { 3, 0, "Upload your Attachment", "የፒኬአም መተረየስ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 1, 10, "pending", "የፒኬአም መተረየስ" },
-                    { 4, 0, "Upload your Attachment", "ክላሽ ጠብመንጃ AK-47", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 2, 10, "pending", "ክላሽ ጠብመንጃ" },
-                    { 5, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 10, "pending", "ካኑኒ ኤስ ሽጉጥ" },
-                    { 6, 0, "Upload your Attachment", "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 5, "pending", "ካኑኒ ኤስ ሽጉጥ" }
+                    { 1, 0, "Upload your Attachment", 0, "ክላሽ ጠብመንጃ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 10, "pending", "ክላሽ ጠብመንጃ" },
+                    { 2, 0, "Upload your Attachment", 0, "ክላሽ ጠብመንጃ ካርታ", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 1, 5, "pending", "ክላሽ ጠብመንጃ ካርታ" },
+                    { 3, 0, "Upload your Attachment", 0, "የፒኬአም መተረየስ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 1, 10, "pending", "የፒኬአም መተረየስ" },
+                    { 4, 0, "Upload your Attachment", 0, "ክላሽ ጠብመንጃ AK-47", "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች", 2, 10, "pending", "ክላሽ ጠብመንጃ" },
+                    { 5, 0, "Upload your Attachment", 0, "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 10, "pending", "ካኑኒ ኤስ ሽጉጥ" },
+                    { 6, 0, "Upload your Attachment", 0, "ካኑኒ ኤስ ሽጉጥ", "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች", 2, 5, "pending", "ካኑኒ ኤስ ሽጉጥ" }
                 });
 
             migrationBuilder.CreateIndex(

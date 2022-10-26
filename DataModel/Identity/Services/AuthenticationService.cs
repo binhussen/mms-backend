@@ -54,7 +54,7 @@ namespace DataModel.Identity.Services
                 Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions),
                 UserName = _user.UserName,
                 Expiration = tokenOptions.ValidTo,
-                Role = tokenOptions.Claims.First(c => c.Type == "role").Value
+                Role = tokenOptions.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value
             };
 
             return response;
