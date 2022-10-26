@@ -4,6 +4,7 @@ using Contracts.Service;
 using DataModel.Models.DTOs.Customers;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -23,7 +24,7 @@ namespace API.Controllers
             _mapper = mapper;
 
         }
-        [HttpGet(Name = "GetAllCustomers")]
+        [HttpGet(Name = "GetAllCustomers"),Authorize]
         public async Task<IActionResult> GetAllCustomers([FromQuery] CustomerParameters customerParameters)
         {
             var customers = await _repository.Customer.GetAllCustomersAsync(customerParameters, trackChanges: false);

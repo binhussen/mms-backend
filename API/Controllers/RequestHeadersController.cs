@@ -4,6 +4,7 @@ using Contracts.Service;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
+using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -48,17 +49,18 @@ namespace API.Controllers
             }
         }
         [HttpGet("type/{type}", Name = "RequestHeaderByType")]
-        public async Task<IActionResult> GetRequestHeaderByType(string type)
+        public async Task<IActionResult> GetRequestHeaderByType(string type, [FromQuery] RequestHeaderParameters requestHeaderParameters)
         {
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderByType(type, trackChanges: false);
-            if (requestHeader == null)
+            var requestHeaders = await _repository.RequestHeader.GetRequestHeaderByType(type, requestHeaderParameters, trackChanges: false);
+            if (requestHeaders == null)
             {
                 _logger.LogInfo($"RequestHeader with type: {type} doesn't exist in the database.");
                 return NotFound();
             }
             else
             {
-                var requestHeaderDto = _mapper.Map<IEnumerable<RequestHeaderDto>>(requestHeader);
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestHeaders.MetaData));
+                var requestHeaderDto = _mapper.Map<IEnumerable<RequestHeaderDto>>(requestHeaders);
                 return Ok(requestHeaderDto);
             }
         }

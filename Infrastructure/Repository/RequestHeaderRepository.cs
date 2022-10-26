@@ -36,7 +36,11 @@ namespace Infrastructure.Repository
             await FindByCondition(c => c.id.Equals(requestHeaderId), trackChanges)
             .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<RequestHeader>> GetRequestHeaderByType(string type, bool trackChanges) =>
-            await FindByCondition(c => c.type.Equals(type), trackChanges).ToListAsync();
+        public async Task<PagedList<RequestHeader>> GetRequestHeaderByType(string type, RequestHeaderParameters requestHeaderParameters, bool trackChanges)
+        {
+            var requestHeader = await FindByCondition(c => c.type.Equals(type), trackChanges).ToListAsync();
+            return PagedList<RequestHeader>
+                  .ToPagedList(requestHeader, requestHeaderParameters.PageNumber, requestHeaderParameters.PageSize);
+        }
     }
 }
