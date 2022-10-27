@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Contracts.Interfaces;
 using DataModel;
-using System.Linq;
-using System.Text;
-using Contracts.Interfaces;
-using DataModel.Parameters;
-using System.Threading.Tasks;
 using DataModel.Models.Entities;
-using System.Collections.Generic;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -23,9 +18,9 @@ namespace Infrastructure.Repository
 
         public async Task<PagedList<StoreHeader>> GetAllStoreHeadersAsync(StoreHeaderParameters storeHeaderParameters, bool trackChanges)
         {
-           var storeHeader = await FindAll(trackChanges)
-                        .OrderBy(c => c.itemNoInExpenditureRegister)
-                        .ToListAsync();
+            var storeHeader = await FindAll(trackChanges)
+                         .OrderBy(c => c.itemNoInExpenditureRegister)
+                         .ToListAsync();
             return PagedList<StoreHeader>
                 .ToPagedList(storeHeader, storeHeaderParameters.PageNumber, storeHeaderParameters.PageSize);
         }

@@ -14,6 +14,8 @@
         IReturnHeader ReturnHeader { get; }
         IReturnItem ReturnItem { get; }
         IHr Hrs { get; }
+        ICategory Category { get; }
+        ISubCategory SubCategory { get; }
         Task SaveAsync();
     }
 }

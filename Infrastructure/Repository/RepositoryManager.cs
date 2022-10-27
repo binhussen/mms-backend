@@ -21,6 +21,8 @@ namespace Infrastructure.Repository
         private IReturnHeader _returnHeaderRepository;
         private IReturnItem _returnItemRepository;
         private IHr _hrRepository;
+        private ICategory _categoryRepository;
+        private ISubCategory _subCategoryRepository;
         /// <summary>
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
@@ -150,6 +152,24 @@ namespace Infrastructure.Repository
                 if (_hrRepository == null)
                     _hrRepository = new HrRepository(_repositoryContext);
                 return _hrRepository;
+            }
+        }
+        public ICategory Category
+        {
+            get
+            {
+                if (_categoryRepository == null)
+                    _categoryRepository = new CategoryRepository(_repositoryContext);
+                return _categoryRepository;
+            }
+        }
+        public ISubCategory SubCategory
+        {
+            get
+            {
+                if (_subCategoryRepository == null)
+                    _subCategoryRepository = new SubCategoryRepository(_repositoryContext);
+                return _subCategoryRepository;
             }
         }
 

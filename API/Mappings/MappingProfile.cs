@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataModel.Identity.Models;
+using DataModel.Models.DTOs.Categories;
 using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Hrs;
@@ -73,6 +74,13 @@ namespace API.Mappings
             CreateMap<HR, HrDto>();
             CreateMap<HrForCreationDto, HR>();
             CreateMap<HrForUpdateDto, HR>().ReverseMap();
+            //Categories
+            CreateMap<Category, CategoryDto>();
+            CreateMap<SubCategory, SubCategoryDto>();
+            CreateMap<CategoryForCreationDto, Category>();
+            CreateMap<SubCategoryForCreationDto, SubCategory>();
+            CreateMap<CategoryForUpdateDto, Category>();
+            CreateMap<SubCategoryForUpdateDto, SubCategory>().ReverseMap();
         }
     }
 }
