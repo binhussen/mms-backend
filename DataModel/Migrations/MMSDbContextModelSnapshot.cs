@@ -155,7 +155,7 @@ namespace DataModel.Migrations
                             phoneNumber = "+251923531946",
                             region = "አማራ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Unspecified).AddTicks(7502), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6347), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
@@ -168,7 +168,7 @@ namespace DataModel.Migrations
                             phoneNumber = "+251923531946",
                             region = "አማራ",
                             subCity = "ቦሌ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Unspecified).AddTicks(7666), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6541), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
@@ -181,7 +181,7 @@ namespace DataModel.Migrations
                             phoneNumber = "+251923531946",
                             region = "ኦሮሚያ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Unspecified).AddTicks(7668), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6543), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
@@ -194,7 +194,7 @@ namespace DataModel.Migrations
                             phoneNumber = "+251923531946",
                             region = "አማራ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Unspecified).AddTicks(7669), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6563), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
@@ -207,7 +207,7 @@ namespace DataModel.Migrations
                             phoneNumber = "+251923531946",
                             region = "አማራ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Unspecified).AddTicks(7671), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6565), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         });
                 });
@@ -371,11 +371,11 @@ namespace DataModel.Migrations
                         {
                             id = 1,
                             LastName = "አለሙ",
-                            birthDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7424),
+                            birthDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6242),
                             firstName = "የሱፍ",
                             fpId = "26505157",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7433),
+                            higherDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6254),
                             middleName = "ፈንታ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -385,11 +385,11 @@ namespace DataModel.Migrations
                         {
                             id = 2,
                             LastName = "አሊ",
-                            birthDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7434),
+                            birthDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6257),
                             firstName = "ሙሀመድ",
                             fpId = "26505152",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7435),
+                            higherDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6258),
                             middleName = "ሁሴን",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -399,11 +399,11 @@ namespace DataModel.Migrations
                         {
                             id = 3,
                             LastName = "ኦርጌሳ",
-                            birthDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7436),
+                            birthDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6259),
                             firstName = "ሁንዴ",
                             fpId = "26505156",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7436),
+                            higherDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6260),
                             middleName = "ረጋሳ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -413,11 +413,11 @@ namespace DataModel.Migrations
                         {
                             id = 4,
                             LastName = "ታደሰ",
-                            birthDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7437),
+                            birthDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6261),
                             firstName = "ሰማይነህ",
                             fpId = "26505155",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7438),
+                            higherDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6262),
                             middleName = "ከበደ",
                             occpation = "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -427,11 +427,11 @@ namespace DataModel.Migrations
                         {
                             id = 5,
                             LastName = "ተንኮሉ",
-                            birthDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7439),
+                            birthDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6263),
                             firstName = "ተረፈ",
                             fpId = "fp2650",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 26, 22, 50, 21, 876, DateTimeKind.Local).AddTicks(7439),
+                            higherDate = new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6264),
                             middleName = "በከለ",
                             occpation = "ዋና ክፍል ሀላፊ",
                             rank = "ዋና ክፍል",
@@ -805,11 +805,9 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("itemNoInExpenditureRegister")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("noOfEntryInTheRegisterOfIncomingGoods")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("notifyHeaderId")
@@ -834,6 +832,14 @@ namespace DataModel.Migrations
                             donor = "የኢትዮጵያ መከላከያ",
                             itemNoInExpenditureRegister = "no. 2",
                             noOfEntryInTheRegisterOfIncomingGoods = "10 items",
+                            notifyHeaderId = 0
+                        },
+                        new
+                        {
+                            id = 3,
+                            donor = "የኢትዮጵያ መከላከያ",
+                            itemNoInExpenditureRegister = "no. 3",
+                            noOfEntryInTheRegisterOfIncomingGoods = "3 items",
                             notifyHeaderId = 0
                         });
                 });
@@ -868,7 +874,6 @@ namespace DataModel.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("serialNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("shelfNo")
@@ -882,9 +887,15 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("totalPrice")
+                        .HasColumnType("int");
+
                     b.Property<string>("type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("unitPrice")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 
@@ -898,15 +909,17 @@ namespace DataModel.Migrations
                             id = 1,
                             approvedQuantity = 0,
                             availability = true,
-                            availableQuantity = 10,
+                            availableQuantity = 1,
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             model = "ክላሽ ጠብመንጃ",
-                            quantity = 10,
+                            quantity = 1,
                             serialNo = "serial 1",
                             shelfNo = "No. 1",
                             storeHeaderId = 1,
                             storeNo = "No. 1",
-                            type = "ክላሽ ጠብመንጃ"
+                            totalPrice = 1,
+                            type = "ክላሽ ጠብመንጃ",
+                            unitPrice = 1
                         },
                         new
                         {
@@ -917,11 +930,12 @@ namespace DataModel.Migrations
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             model = "ክላሽ ጠብመንጃ ካርታ",
                             quantity = 10,
-                            serialNo = "serial 2",
                             shelfNo = "No 2",
                             storeHeaderId = 1,
                             storeNo = "No. 1",
-                            type = "ክላሽ ጠብመንጃ ካርታ"
+                            totalPrice = 300,
+                            type = "ክላሽ ጠብመንጃ ካርታ",
+                            unitPrice = 30
                         },
                         new
                         {
@@ -931,12 +945,14 @@ namespace DataModel.Migrations
                             availableQuantity = 10,
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             model = "የፒኬአም መተረየስ",
-                            quantity = 10,
+                            quantity = 1,
                             serialNo = "serial 3",
                             shelfNo = "No. 1",
                             storeHeaderId = 2,
                             storeNo = "N0 2",
-                            type = "የፒኬአም መተረየስ"
+                            totalPrice = 50,
+                            type = "የፒኬአም መተረየስ",
+                            unitPrice = 50
                         },
                         new
                         {
@@ -947,11 +963,12 @@ namespace DataModel.Migrations
                             itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                             model = "ክላሽ ጠብመንጃ AK-47",
                             quantity = 10,
-                            serialNo = "serial 4",
                             shelfNo = "No 2",
-                            storeHeaderId = 1,
+                            storeHeaderId = 2,
                             storeNo = "No. 1",
-                            type = "ክላሽ ጠብመንጃ"
+                            totalPrice = 100,
+                            type = "ክላሽ ጠብመንጃ",
+                            unitPrice = 10
                         },
                         new
                         {
@@ -962,26 +979,29 @@ namespace DataModel.Migrations
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             model = "ካኑኒ ኤስ ሽጉጥ",
                             quantity = 10,
-                            serialNo = "serial 5",
                             shelfNo = "No. 1",
-                            storeHeaderId = 2,
+                            storeHeaderId = 3,
                             storeNo = "N0 2",
-                            type = "ካኑኒ ኤስ ሽጉጥ"
+                            totalPrice = 200,
+                            type = "ካኑኒ ኤስ ሽጉጥ",
+                            unitPrice = 20
                         },
                         new
                         {
                             id = 6,
                             approvedQuantity = 0,
                             availability = true,
-                            availableQuantity = 10,
+                            availableQuantity = 1,
                             itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                             model = "ካኑኒ ኤስ ሽጉጥ",
-                            quantity = 10,
+                            quantity = 1,
                             serialNo = "serial 6",
                             shelfNo = "No. 1",
-                            storeHeaderId = 1,
+                            storeHeaderId = 3,
                             storeNo = "N0 2",
-                            type = "ካኑኒ ኤስ ሽጉጥ"
+                            totalPrice = 600,
+                            type = "ካኑኒ ኤስ ሽጉጥ",
+                            unitPrice = 60
                         });
                 });
 
@@ -1014,22 +1034,22 @@ namespace DataModel.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cba76640-1065-45ab-a596-26ee75556a50",
-                            ConcurrencyStamp = "b8cb37d2-b276-4c62-92b2-99a3de974857",
+                            Id = "a558bf95-cb21-4493-a250-da9d7dac8434",
+                            ConcurrencyStamp = "d2317e8a-6c1b-4c2f-8a99-10bc298ddee4",
                             Name = "mmd",
                             NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "865d662b-00f9-469b-a037-e2f43b1e11bb",
-                            ConcurrencyStamp = "def45cad-f32f-4b23-8ee5-ee277eb09142",
+                            Id = "bf39e758-8fb9-48ed-9339-b127f2fe0dc6",
+                            ConcurrencyStamp = "cd20b2ca-3f5d-4b76-b25b-9586a1866061",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "076093ab-a771-41e9-b455-a8fd2f76af0c",
-                            ConcurrencyStamp = "f67ca778-d4a5-46cd-a3b0-5a53638ff82c",
+                            Id = "157b15ce-8eff-4ca9-8632-f13c9d26a924",
+                            ConcurrencyStamp = "00ab3b70-f091-4e9b-aaea-e594e0944f07",
                             Name = "storeman",
                             NormalizedName = "storeman"
                         });

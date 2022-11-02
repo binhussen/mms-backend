@@ -20,11 +20,13 @@ namespace API.Extensions
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins",
-                    builder => builder
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin());
+            options.AddPolicy("AllowAllOrigins",
+                builder => builder.AllowAnyHeader()
+                //builder.SetIsOriginAllowed(_ => true)
+                //.AllowanyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+                    //.AllowCredentials());;; // allow any origin); 
             });
 
         }
@@ -95,7 +97,7 @@ namespace API.Extensions
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequiredLength = 10;
+                //opt.Password.RequiredLength = 10;
                 //opt.User.RequireUniqueEmail = true;
                 opt.Password.RequiredUniqueChars = 1;
 
@@ -105,7 +107,7 @@ namespace API.Extensions
                 // Lockout settings.
                 opt.Lockout.AllowedForNewUsers = true;
                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
-                opt.Lockout.MaxFailedAccessAttempts = 3;
+                //opt.Lockout.MaxFailedAccessAttempts = 3;
             })
 
                 .AddEntityFrameworkStores<MMSDbContext>()

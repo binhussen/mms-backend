@@ -5,110 +5,103 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataModel.Migrations
 {
-    public partial class distr : Migration
+    public partial class stores : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "503c4b5b-5d07-4cce-8fb7-85a72186b6e0");
+                keyValue: "7d26ee3c-fff3-44d0-aa47-4e2af568f2f1");
 
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "7b3935ec-1ad4-4076-ba13-81ab9a3ace6a");
+                keyValue: "c0634576-91f8-469e-b765-86dfcfe12e65");
 
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "d61161de-7d58-4090-90bb-25b701bae57f");
-
-            migrationBuilder.AddColumn<int>(
-                name: "distributeQuantity",
-                table: "RequestItems",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+                keyValue: "f8bc4d77-0a5e-480b-9038-e7f6d6c1a4e1");
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 1,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Unspecified).AddTicks(3466), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6347), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 2,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Unspecified).AddTicks(3482), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6541), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 3,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Unspecified).AddTicks(3483), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6543), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 4,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Unspecified).AddTicks(3484), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6563), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 5,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Unspecified).AddTicks(3486), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Unspecified).AddTicks(6565), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 1,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3337), new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3349) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6242), new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6254) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 2,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3351), new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3351) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6257), new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6258) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 3,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3352), new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3353) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6259), new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6260) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 4,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3354), new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3354) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6261), new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6262) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 5,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3355), new DateTime(2022, 8, 26, 22, 34, 31, 526, DateTimeKind.Local).AddTicks(3355) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6263), new DateTime(2022, 11, 2, 11, 29, 3, 477, DateTimeKind.Local).AddTicks(6264) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1ba64a89-14f6-4541-b726-6031a8633771", "c7911519-f013-4b63-82f6-020eb8da0ea9", "Admin", "Admin" },
-                    { "2cae8b48-ce95-4042-9e57-9478590cf7b1", "bcd6fcbf-c9d3-4f99-983e-8fc65ccd7a23", "storeman", "storeman" },
-                    { "d46e8e1c-5403-4110-8526-becd0e4923f1", "df25bccd-e380-483b-acdf-7e34c1421cb5", "mmd", "MMD" }
+                    { "157b15ce-8eff-4ca9-8632-f13c9d26a924", "00ab3b70-f091-4e9b-aaea-e594e0944f07", "storeman", "storeman" },
+                    { "a558bf95-cb21-4493-a250-da9d7dac8434", "d2317e8a-6c1b-4c2f-8a99-10bc298ddee4", "mmd", "MMD" },
+                    { "bf39e758-8fb9-48ed-9339-b127f2fe0dc6", "cd20b2ca-3f5d-4b76-b25b-9586a1866061", "Admin", "Admin" }
                 });
         }
 
@@ -117,100 +110,96 @@ namespace DataModel.Migrations
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "1ba64a89-14f6-4541-b726-6031a8633771");
+                keyValue: "157b15ce-8eff-4ca9-8632-f13c9d26a924");
 
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "2cae8b48-ce95-4042-9e57-9478590cf7b1");
+                keyValue: "a558bf95-cb21-4493-a250-da9d7dac8434");
 
             migrationBuilder.DeleteData(
                 table: "Roles",
                 keyColumn: "Id",
-                keyValue: "d46e8e1c-5403-4110-8526-becd0e4923f1");
-
-            migrationBuilder.DropColumn(
-                name: "distributeQuantity",
-                table: "RequestItems");
+                keyValue: "bf39e758-8fb9-48ed-9339-b127f2fe0dc6");
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 1,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Unspecified).AddTicks(6577), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Unspecified).AddTicks(932), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 2,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Unspecified).AddTicks(6595), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Unspecified).AddTicks(952), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 3,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Unspecified).AddTicks(6596), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Unspecified).AddTicks(954), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 4,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Unspecified).AddTicks(6597), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Unspecified).AddTicks(955), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Customers",
                 keyColumn: "customerId",
                 keyValue: 5,
                 column: "timeLimit",
-                value: new DateTimeOffset(new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Unspecified).AddTicks(6598), new TimeSpan(0, 3, 0, 0, 0)));
+                value: new DateTimeOffset(new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Unspecified).AddTicks(956), new TimeSpan(0, 3, 0, 0, 0)));
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 1,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6511), new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6522) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(846), new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(859) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 2,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6525), new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6525) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(861), new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(862) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 3,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6526), new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6526) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(863), new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(864) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 4,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6527), new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6528) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(865), new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(865) });
 
             migrationBuilder.UpdateData(
                 table: "Hrs",
                 keyColumn: "hrId",
                 keyValue: 5,
                 columns: new[] { "birthDate", "higherDate" },
-                values: new object[] { new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6529), new DateTime(2022, 8, 26, 22, 24, 6, 563, DateTimeKind.Local).AddTicks(6529) });
+                values: new object[] { new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(866), new DateTime(2022, 11, 2, 11, 24, 21, 313, DateTimeKind.Local).AddTicks(867) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "503c4b5b-5d07-4cce-8fb7-85a72186b6e0", "3000467d-103d-4a4e-95e4-32ff83ff65fc", "storeman", "storeman" },
-                    { "7b3935ec-1ad4-4076-ba13-81ab9a3ace6a", "1eb5a342-be04-4f3e-8c15-8474f3b8c0c1", "Admin", "Admin" },
-                    { "d61161de-7d58-4090-90bb-25b701bae57f", "8475f820-cfbf-4582-898a-63e20f2fcd72", "mmd", "MMD" }
+                    { "7d26ee3c-fff3-44d0-aa47-4e2af568f2f1", "1d7a3db3-856d-4b8f-a1b5-6db79450a53a", "mmd", "MMD" },
+                    { "c0634576-91f8-469e-b765-86dfcfe12e65", "969ed7f5-b07b-4ea2-b960-80f80e7d2e27", "storeman", "storeman" },
+                    { "f8bc4d77-0a5e-480b-9038-e7f6d6c1a4e1", "1be96ce9-ab94-4ddb-b4e5-bd85dd895fc8", "Admin", "Admin" }
                 });
         }
     }
