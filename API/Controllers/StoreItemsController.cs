@@ -86,6 +86,7 @@ namespace API.Controllers
             }
             var storeItemEntity = _mapper.Map<StoreItem>(storeItem);
             storeItemEntity.availableQuantity = storeItemEntity.quantity;
+            storeItemEntity.totalPrice = storeItemEntity.quantity * storeItemEntity.unitPrice;
 
             _repository.StoreItem.CreateStoreItemForStoreHeader(headerid, storeItemEntity);
             await _repository.SaveAsync();
