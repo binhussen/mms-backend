@@ -23,6 +23,13 @@ namespace DataModel.Configuration
                     itemNoInExpenditureRegister = "no. 2",
                     noOfEntryInTheRegisterOfIncomingGoods = "10 items",
                     donor = "የኢትዮጵያ መከላከያ"
+                },
+                new StoreHeader
+                {
+                    id = 3,
+                    itemNoInExpenditureRegister = "no. 3",
+                    noOfEntryInTheRegisterOfIncomingGoods = "3 items",
+                    donor = "የኢትዮጵያ መከላከያ"
                 }
             );
         }

@@ -19,24 +19,28 @@ namespace DataModel.Configuration
                     type = "ክላሽ ጠብመንጃ",
                     storeNo = "No. 1",
                     shelfNo = "No. 1",
-                    quantity = 10,
-                    availableQuantity = 10,
+                    quantity = 1,
+                    availableQuantity = 1,
                     availability = true,
-                    storeHeaderId = 1
+                    storeHeaderId = 1,
+                    unitPrice = 1,
+                    totalPrice = 1,
                 },
                 new StoreItem
                 {
                     id = 2,
                     itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                     model = "ክላሽ ጠብመንጃ ካርታ",
-                    serialNo = "serial 2",
+                    //serialNo = "serial 2",
                     type = "ክላሽ ጠብመንጃ ካርታ",
                     storeNo = "No. 1",
                     shelfNo = "No 2",
                     quantity = 10,
                     availableQuantity = 10,
                     availability = true,
-                    storeHeaderId = 1
+                    storeHeaderId = 1,
+                    unitPrice=30,
+                    totalPrice = 300,
                 },
                  new StoreItem
                  {
@@ -47,38 +51,44 @@ namespace DataModel.Configuration
                      type = "የፒኬአም መተረየስ",
                      storeNo = "N0 2",
                      shelfNo = "No. 1",
-                     quantity = 10,
+                     quantity = 1,
                      availableQuantity = 10,
                      availability = true,
-                     storeHeaderId = 2
+                     storeHeaderId = 2,
+                     unitPrice=50,
+                     totalPrice=50,
                  },
                   new StoreItem
                   {
                       id = 4,
                       itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
                       model = "ክላሽ ጠብመንጃ AK-47",
-                      serialNo = "serial 4",
+                      //serialNo = "serial 4",
                       type = "ክላሽ ጠብመንጃ",
                       storeNo = "No. 1",
                       shelfNo = "No 2",
                       quantity = 10,
                       availableQuantity = 10,
                       availability = true,
-                      storeHeaderId = 1
+                      storeHeaderId = 2,
+                      unitPrice = 10,
+                      totalPrice = 100
                   },
                  new StoreItem
                  {
                      id = 5,
                      itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                      model = "ካኑኒ ኤስ ሽጉጥ",
-                     serialNo = "serial 5",
+                     //serialNo = "serial 5",
                      type = "ካኑኒ ኤስ ሽጉጥ",
                      storeNo = "N0 2",
                      shelfNo = "No. 1",
                      quantity = 10,
                      availableQuantity = 10,
                      availability = true,
-                     storeHeaderId = 2
+                     storeHeaderId = 3,
+                     unitPrice = 20,
+                     totalPrice = 200
                  },
                    new StoreItem
                    {
@@ -89,10 +99,12 @@ namespace DataModel.Configuration
                        type = "ካኑኒ ኤስ ሽጉጥ",
                        storeNo = "N0 2",
                        shelfNo = "No. 1",
-                       quantity = 10,
-                       availableQuantity = 10,
+                       quantity = 1,
+                       availableQuantity = 1,
                        availability = true,
-                       storeHeaderId = 1
+                       storeHeaderId = 3,
+                       unitPrice= 60,
+                       totalPrice= 600
                    }
             );
         }
