@@ -8,5 +8,6 @@
         public bool ValidQuantityRange => MaxQuantity > MinQuantity;
 
         public string? SearchTerm { get; set; }
+
     }
 }
