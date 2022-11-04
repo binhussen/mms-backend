@@ -1,4 +1,5 @@
-﻿using Contracts.Interfaces;
+﻿
+using Contracts.Interfaces;
 using Contracts.Service;
 using DataModel;
 using DataModel.Identity.Models;
@@ -22,11 +23,9 @@ namespace API.Extensions
             {
             options.AddPolicy("AllowAllOrigins",
                 builder => builder.AllowAnyHeader()
-                //builder.SetIsOriginAllowed(_ => true)
-                //.AllowanyHeader()
                 .AllowAnyMethod()
-                .AllowAnyOrigin());
-                    //.AllowCredentials());;; // allow any origin); 
+                .AllowAnyOrigin()
+                .WithExposedHeaders("*"));
             });
 
         }

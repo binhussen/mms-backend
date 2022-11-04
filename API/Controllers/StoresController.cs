@@ -23,24 +23,13 @@ namespace API.Controllers
 
         }
         [HttpGet(Name = "GetStoreItems")]
-        public async Task<IActionResult> GetAllStoreItems([FromQuery] StoreItemParameters storeItemParameters)
+        public async Task<IActionResult> GetAllStoreItems([FromQuery] StoreItemParameters storeItemParameters, [FromQuery] string? category)
         {
-            var storeItems = await _repository.StoreItem.GetAllStoreItemsAsync(storeItemParameters, trackChanges: false);
+            var storeItems = await _repository.StoreItem.GetAllStoreItemsAsync(storeItemParameters, category, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));
-
-            var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
-                                .GroupBy(m => m.model)
-                               .Select(g => new
-                               {
-                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                   model = g.Key,
-                                   availableQuantity = g.Sum(x => x.availableQuantity),
-                                   approvedQuantity = g.Sum(x => x.approvedQuantity)
-                               }).ToList();
-            return Ok(storeItemDtos);
+            return Ok(storeItems);
         }
-
     }
 }
 
