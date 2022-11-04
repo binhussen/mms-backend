@@ -1,11 +1,12 @@
-﻿using DataModel.Models.Entities;
+﻿using DataModel.Models.DTOs.Stores;
+using DataModel.Models.Entities;
 using DataModel.Parameters;
 
 namespace Contracts.Interfaces
 {
     public interface IStoreItem
     {
-        Task<PagedList<StoreItem>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters, bool trackChanges);
+        Task<PagedList<StoreListDto>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters,string category, bool trackChanges);
         Task<PagedList<StoreItem>> GetStoreItemsAsync(int storeHeaderId, StoreItemParameters storeItemParameters, bool trackChanges);
         Task<StoreItem> GetStoreItemAsync(int storeHeaderId, int id, bool trackChanges);
         Task<IEnumerable<StoreItem>> GetStoreByQtyAsync(bool trtrackChanges);
