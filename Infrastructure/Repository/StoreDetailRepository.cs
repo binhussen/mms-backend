@@ -1,5 +1,6 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
+using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Infrastructure.Extensions;
@@ -23,13 +24,30 @@ namespace Infrastructure.Repository
         {
             Delete(storeItem);
         }
-        public async Task<PagedList<StoreItem>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters, bool trackChanges)
+        public async Task<PagedList<StoreListDto>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters,string category, bool trackChanges)
         {
             var storeItem = await FindAll(trackChanges)
                         .OrderBy(c => c.model)
                        .ToListAsync();
-            return PagedList<StoreItem>
-                .ToPagedList(storeItem, storeItemParameters.PageNumber, storeItemParameters.PageSize);
+            if (category != null)
+            {
+
+                storeItem = await FindByCondition(e => e.type==category, trackChanges)
+                            .OrderBy(c => c.model)
+                           .ToListAsync();
+            }
+            var storeItemDtos = storeItem.GroupBy(m => m.model)
+                               .Select(g => new StoreListDto
+                               {
+                                   itemType = g.Select(x => x.type).FirstOrDefault(),
+                                   model = g.Key,
+                                   quantity = g.Sum(x => x.quantity),
+                                   availableQuantity = g.Sum(x => x.availableQuantity),
+                                   approvedQuantity = g.Sum(x => x.approvedQuantity)
+                               }).ToList();
+
+            return PagedList<StoreListDto>
+                .ToPagedList(storeItemDtos, storeItemParameters.PageNumber, storeItemParameters.PageSize);
 
         }
 
